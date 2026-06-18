@@ -24,7 +24,7 @@ jobs:
         uses: rzk-lang/rzk-game-action@v1
         with:
           game: game/game.yaml
-          engine-version: v0.1.0
+          engine-version: v0.1.0-rc.1
 
       - name: 🚀 Deploy to GitHub Pages (gh-pages)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
