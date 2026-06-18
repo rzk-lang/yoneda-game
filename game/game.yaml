@@ -1,0 +1,13 @@
+title: The ∞-Yoneda Game
+
+# SCAFFOLD. This is a placeholder table of contents with a single starter level,
+# enough to build and deploy the game through rzk-game-action. The real content,
+# following Riehl's geodesic to the Yoneda lemma, is added in later PRs.
+sections:
+- id: warmup
+  title: Warm-up
+  items:
+  - prose:
+      file: levels/intro.md
+  - puzzle:
+      file: levels/identity.rzk.md
