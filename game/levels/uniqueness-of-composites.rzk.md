@@ -1,7 +1,8 @@
 ---
 hints:
-- text: 'The space of fillers `Σ (k : hom A x z) , hom2 A x y z f g k` is contractible, and its center is the chosen composite paired with its witness. Your own `(h , alpha)` is another point of that same space, so the contraction connects the two. The equality you want is the path on first components.'
-- text: 'Feed the contraction to `first-path-Σ`. The contraction is `homotopy-contraction (Σ (k : hom A x z) , hom2 A x y z f g k) (is-segal-A x y z f g) (h , alpha)`; its first-component path is exactly the goal.'
+- text: 'Contractibility says more than "a composite exists": every point of the filler space equals the center. The center is the chosen composite paired with its witness, and your own `(h , alpha)` is another point of the same space. So there is a path between the two points, and its first component is the equality of arrows you want.'
+- text: 'Build it with `first-path-Σ`, which turns a path of pairs into a path of their first components. The shape is `first-path-Σ (hom A x z) (hom2 A x y z f g) (comp-is-segal A is-segal-A x y z f g , witness-comp-is-segal A is-segal-A x y z f g) (h , alpha) ?`; the one remaining hole is the path of pairs. You pass `hom A x z` and `hom2 A x y z f g` because rzk has no implicit arguments.'
+- text: 'That path of pairs is the contraction applied to your point: `homotopy-contraction (Σ (k : hom A x z) , hom2 A x y z f g k) (is-segal-A x y z f g) (h , alpha)`.'
   when-goal: '= h'
 id: uniqueness-of-composites
 inventory:
@@ -9,6 +10,8 @@ inventory:
 - 'homotopy-contraction : (A : U) (is-contr-A : is-contr A) (z : A) → center-contraction A is-contr-A = z | the path from the center to any point'
 - 'comp-is-segal        : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z | the chosen composite'
 - 'witness-comp-is-segal: (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom2 A x y z f g (comp-is-segal A is-segal-A x y z f g) | the triangle witnessing the chosen composite'
+- 'hom                  : (A : U) (x y : A) → U | the type of arrows x → y, passed as an explicit type argument'
+- 'hom2                 : (A : U) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) → U | the type of filler triangles, passed as an explicit type argument'
 statement: comp-is-segal A is-segal-A x y z f g = h
 title: Uniqueness of composites
 ---
