@@ -1,14 +1,14 @@
 # Content map: the ∞-Yoneda game
 
-This note decomposes Emily Riehl's [geodesic to the Yoneda lemma](https://emilyriehl.github.io/yoneda/master/simplicial-hott/13-yoneda-geodesic.rzk/) into sections and levels for the game. It is a planning artefact, meant to be reviewed before the bulk of the levels are authored. We gate the structure first, then fill in prose and proofs, mirroring how the engine's own game and the `rzk-game-template` were built.
+This note decomposes Emily Riehl's [geodesic to the Yoneda lemma](https://emilyriehl.github.io/yoneda/master/simplicial-hott/13-yoneda-geodesic.rzk/) into sections and levels for the game. It is a planning artifact, meant to be reviewed before the bulk of the levels are authored. We gate the structure first, then fill in prose and proofs, mirroring how the engine's own game and the `rzk-game-template` were built.
 
 The source is a self-contained proof of the contravariant ∞-Yoneda lemma. It needs only pre-∞-categories: no covariant-family machinery is introduced. It treats the homotopy-type-theory lemmas it uses as imported prerequisites. We give those prerequisites their own front sections, so the game builds its HoTT foundation first and reaches the directed shapes already equipped.
 
 ## Vocabulary
 
-We follow the `game.yaml` schema: a game is a list of **sections**, each holding **levels** that are either prose or puzzles. We avoid "curriculum" and "world".
+We follow the `game.yaml` schema: a game is a list of **sections**, each holding **levels** that are either prose or puzzles. We avoid "curriculum" and "world". The naming, notation, prose, and teaching conventions live in `notes/conventions.md`.
 
-The geodesic names the Segal condition `Is-pre-∞-category`. The engine's existing game uses `is-segal`, with `comp-is-segal` and `witness-comp-is-segal` for the chosen composite and its witness. We recommend standardising on `is-segal` throughout the game. This reuses the engine levels verbatim and lets the later geodesic machinery be rephrased over the same `comp-is-segal` / `witness-comp-is-segal` names, so only the genuinely new definitions (naturality, Yoneda) introduce fresh vocabulary. We keep "pre-∞-category" in the prose as the standard synonym.
+The geodesic names the Segal condition `Is-pre-∞-category`. The engine's existing game uses `is-segal`, with `comp-is-segal` and `witness-comp-is-segal` for the chosen composite and its witness. We recommend standardizing on `is-segal` throughout the game. This reuses the engine levels verbatim and lets the later geodesic machinery be rephrased over the same `comp-is-segal` / `witness-comp-is-segal` names, so only the genuinely new definitions (naturality, Yoneda) introduce fresh vocabulary. We keep "pre-∞-category" in the prose as the standard synonym.
 
 ### Grouping into chapters (future)
 
@@ -24,7 +24,7 @@ The source builds up through these rungs, in dependency order. Rung 0 collects t
 - **C. Hom2.** `Hom2` — commutative triangles over `Δ₂`.
 - **D. Segal + composition.** `Is-pre-∞-category`, `Comp-…`, `Witness-comp-…`, `Uniqueness-comp-…`.
 - **E. Identity + unit laws.** `Id-hom`, the two unit triangles, the two unit-law equalities.
-- **F. Naturality of representable transformations.** Nine definitions building `id-codomain-square` up to `Naturality-contravariant-fiberwise-representable-transformation`: every fibrewise transformation `ϕ` is automatically natural.
+- **F. Naturality of representable transformations.** Nine definitions building `id-codomain-square` up to `Naturality-contravariant-fiberwise-representable-transformation`: every fiberwise transformation `ϕ` is automatically natural.
 - **G. The Yoneda lemma.** `Contra-evid` (evaluation at the identity), `Contra-yon` (its inverse), the two round-trips, and `Contra-yoneda-lemma` (the equivalence).
 - **H. Naturality of the equivalence.** Naturality of `Contra-evid` in the family and in the object.
 
@@ -38,7 +38,9 @@ Status is **port** (copy/trim an existing engine level) or **new** (author from 
 
 These sections need no shapes. Their preludes are small and self-contained, so they keep recheck fast and let players warm up on plain HoTT before the directed layer. The definitions and the axiom are given in the prelude (`Σ`, `is-contr`, `is-equiv`, `FunExt`); the lemmas are the puzzles (`ap`, `concat`, `rev`, the zig-zag concatenations, `first-path-Σ`, `homotopy-contraction`, `eq-htpy`).
 
-A HoTT-fluent player should not have to grind through lemmas they already know. So each lemma puzzle is marked `role: pretest` with `remedies` pointing to the relevant sHoTT page. The player can then mark it "I already know this", which satisfies it as a `prereq` for the directed sections downstream (authoring.md: a puzzle is satisfied once solved or once its pre-test is marked known). The chapter is thus fast-trackable lemma by lemma: novices solve and learn, experts skip ahead. The granularity is a dial — every lemma a pretest, or one representative pretest per section — settled in the conventions note.
+A HoTT-fluent player should not have to grind through lemmas they already know. So most lemma puzzles are marked `role: pretest` with `remedies` to the relevant sHoTT page; the player marks one "I already know this" and it counts as satisfied for any downstream `prereq` (authoring.md: a puzzle is satisfied once solved or once its pre-test is marked known). To confirm that a fast-tracking player does grasp the material, one or two culminating puzzles at the end of each HoTT section stay `core` (mandatory). The routine lemmas are skippable, but each section still gates on a short comprehension check.
+
+Using the pre-test as a fast-track is a mild abuse of the feature, which exists for per-puzzle self-assessment rather than chapter-level skipping. It is good enough for now. A proper skip or placement mechanism is filed as an upstream request in `notes/engine-followups.md`.
 
 **1. Paths and path algebra — new.** `refl`, then `ap` (functions act on paths), `rev` (inversion), `concat` (composition), and the `zig-zag-concat` / `zag-zig-concat` reassociations the naturality proofs later need.
 
@@ -116,9 +118,11 @@ The HoTT sections trim to exactly what the geodesic consumes — not all of HoTT
 Per the handoff, engine gaps are handled case by case as they arise. The candidates this map surfaces:
 
 - **funext as an assumption.** Chapter I section 4 introduces `#assume funext : FunExt`, and sections 4 and 10 carry `uses (funext)`. We must confirm the game schema and gating accept `#assume` in a prelude and the `uses (…)` annotation. Moving this into chapter I means we hit the question early, by design, rather than at the Yoneda capstone.
-- **Sections with variables.** The geodesic proves the round-trips inside `#section` / `#variable` with automatic generalisation. These can be inlined into ordinary `#def`s to sidestep the feature if the engine does not carry it into a level.
+- **Sections with variables.** The geodesic proves the round-trips inside `#section` / `#variable` with automatic generalization. These can be inlined into ordinary `#def`s to sidestep the feature if the engine does not carry it into a level.
 - **Diagram rendering.** The source embeds inline SVG triangles and squares as illustration. These are prose only and need no engine support; they are a nice-to-have for the game UI (cf. the roadmap's D12).
 - **Prelude recheck latency.** Sections 8–10 carry the largest preludes. Prelude-context reuse is still deferred upstream, so this is where per-level latency may first hurt. Watch it.
+
+Feature requests this map surfaces (the chapters grouping and a real fast-track mechanism) are collected in `notes/engine-followups.md`.
 
 ## Authoring gotchas to respect
 
