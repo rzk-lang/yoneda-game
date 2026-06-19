@@ -1,9 +1,7 @@
 ---
 id: left-unit-triangle
 inventory:
-- 'f        : hom A x y | the edge to reuse'
-- 'id-hom   : (A : U) → (x : A) → hom A x x | the identity arrow'
-- 'λ-intro  : introduce the cube coordinates'
+- 'id-hom : (A : U) → (x : A) → hom A x x | the identity arrow'
 statement: hom2 A x x y (id-hom A x) f f
 title: The left-unit triangle
 ---

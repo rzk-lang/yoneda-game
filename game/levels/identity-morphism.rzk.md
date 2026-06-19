@@ -5,9 +5,7 @@ hints:
   when-goal: 'Δ¹ t'
 id: identity-morphism
 inventory:
-- 'x        : A | the object to loop at'
-- 'id-hom   : (A : U) → (x : A) → hom A x x | the identity arrow (an alternative)'
-- 'λ-intro  : introduce the interval coordinate'
+- 'id-hom : (A : U) → (x : A) → hom A x x | the identity arrow (an alternative)'
 statement: hom A x x
 title: The identity morphism
 ---

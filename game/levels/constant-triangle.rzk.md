@@ -1,9 +1,7 @@
 ---
 id: constant-triangle
 inventory:
-- 'x        : A | the object x'
-- 'id-hom   : (A : U) → (x : A) → hom A x x | the identity arrow'
-- 'λ-intro  : introduce the two cube coordinates'
+- 'id-hom : (A : U) → (x : A) → hom A x x | the identity arrow'
 statement: hom2 A x x x (id-hom A x) (id-hom A x) (id-hom A x)
 title: The constant triangle
 ---
