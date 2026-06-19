@@ -39,6 +39,29 @@ sections:
       - path-concatenation
   - prose:
       file: levels/paths-summary.md
+- id: sigma
+  title: Sigma types
+  items:
+  - prose:
+      file: levels/sigma-intro.md
+  - puzzle:
+      file: levels/forming-a-pair.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the Sigma-types chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/05-sigma.rzk/
+  - puzzle:
+      file: levels/second-projection.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the Sigma-types chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/05-sigma.rzk/
+  - puzzle:
+      file: levels/path-on-first-components.rzk.md
+      prereqs:
+      - functions-act-on-paths
+  - prose:
+      file: levels/sigma-summary.md
 - id: morphisms
   title: Morphisms and triangles
   items:
