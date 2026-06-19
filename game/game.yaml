@@ -87,6 +87,30 @@ sections:
       - the-contraction
   - prose:
       file: levels/contractibility-summary.md
+- id: equivalences
+  title: Equivalences and function extensionality
+  items:
+  - prose:
+      file: levels/equivalences-intro.md
+  - puzzle:
+      file: levels/the-identity-equivalence.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the equivalences chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/03-equivalences.rzk/
+  - puzzle:
+      file: levels/a-homotopy-from-a-path.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the equivalences chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/03-equivalences.rzk/
+  - puzzle:
+      file: levels/homotopies-give-paths.rzk.md
+      prereqs:
+      - the-identity-equivalence
+      - a-homotopy-from-a-path
+  - prose:
+      file: levels/equivalences-summary.md
 - id: morphisms
   title: Morphisms and triangles
   items:
