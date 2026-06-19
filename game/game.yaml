@@ -210,9 +210,18 @@ sections:
       - lower-composition-witness
       - uniqueness-of-composites
   - puzzle:
+      file: levels/upper-composition-witness.rzk.md
+      prereqs:
+      - lower-composition-witness
+  - puzzle:
+      file: levels/upper-composition-coherence.rzk.md
+      prereqs:
+      - upper-composition-witness
+      - uniqueness-of-composites
+  - puzzle:
       file: levels/simplifying-the-upper-coherence.rzk.md
       prereqs:
-      - lower-composition-coherence
+      - upper-composition-coherence
       - right-unit-law
   - puzzle:
       file: levels/naturality-of-representable-transformation.rzk.md

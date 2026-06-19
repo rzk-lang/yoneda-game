@@ -8,7 +8,7 @@ id: simplifying-the-upper-coherence
 inventory:
 - 'zag-zig-concat : (A : U) (x y z : A) (p : y = x) (q : y = z) → x = z | join two paths that share a source'
 - 'comp-id-is-segal : (A : U) (is-segal-A : is-segal A) (x y : A) (f : hom A x y) → comp-is-segal A is-segal-A x y y f (id-hom A y) = f | the right unit law'
-- 'id-coherence : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) = diagonal … | the upper coherence (given)'
+- 'id-coherence : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) = diagonal … | the upper coherence'
 - 'diagonal : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b | the diagonal of the transformed square'
 - 'comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z | the chosen composite'
 - 'id-hom : (A : U) (x : A) → hom A x x | the identity arrow'
@@ -17,7 +17,7 @@ statement: 'ϕ x (comp-is-segal A is-segal-A x y a f v) = diagonal A is-segal-A 
 title: Simplifying the upper coherence
 ---
 
-The square's upper half gives the second relation. Its witness and coherence are supplied in the prelude as `id-witness` and `id-coherence`, the mirror images of the lower pair you just built. But `id-coherence` carries a needless identity: it equates the diagonal with `ϕ x` of the composite of `f` and `v`, post-composed with the identity at `b`, rather than with `ϕ x` of that composite directly. The right unit law you proved earlier strips the identity, since composing with it returns the original arrow. Both facts speak about that same post-composed arrow: the right unit law equates it to `ϕ x` of the composite, and `id-coherence` equates it to the diagonal. Join the two, out of their shared arrow, with `zag-zig-concat`. The identity drops out, leaving `ϕ x` of the composite equal to the diagonal. Build it.
+The upper coherence `id-coherence` you just built carries a needless identity: it equates the diagonal with `ϕ x` of the composite of `f` and `v`, post-composed with the identity at `b`, rather than with `ϕ x` of that composite directly. The right unit law you proved earlier strips the identity, since composing with it returns the original arrow. Both facts speak about that same post-composed arrow: the right unit law equates it to `ϕ x` of the composite, and `id-coherence` equates it to the diagonal. Join the two, out of their shared arrow, with `zag-zig-concat`. The identity drops out, leaving `ϕ x` of the composite equal to the diagonal. Build it.
 
 (The `#def` name `simplified-id-coherence` abbreviates the geodesic's `simplified-coherence-witness-id-transformation-id-codomain-square`.)
 

@@ -1,21 +1,21 @@
 ---
 hints:
-- text: 'This is uniqueness of composites again, exactly as in the unit-law section. The witness `comp-witness …` proves the diagonal is a composite of `f` and `ϕ y v`; uniqueness identifies it with the chosen composite.'
-- text: 'Apply `uniqueness-comp-is-segal` to `f` and `ϕ y v`: `uniqueness-comp-is-segal A is-segal-A x y b f (ϕ y v) ? ?`.'
-- text: 'The last two arguments are the diagonal and its witness: `(diagonal A is-segal-A a b x y f v ϕ)` and `(comp-witness A is-segal-A a b x y f v ϕ)`.'
+- text: 'The same move as the lower coherence, applied to the upper witness `id-witness`: `uniqueness-comp-is-segal …`.'
+- text: 'The two composable edges are `ϕ x` of the composite and the identity at `b`: `uniqueness-comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) ? ?`.'
+- text: 'The last two arguments are the diagonal and the upper witness: `(diagonal A is-segal-A a b x y f v ϕ)` and `(id-witness A is-segal-A a b x y f v ϕ)`.'
   when-goal: '= (diagonal'
-id: lower-composition-coherence
+id: upper-composition-coherence
 inventory:
 - 'uniqueness-comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) (alpha : hom2 A x y z f g h) → comp-is-segal A is-segal-A x y z f g = h | any witnessed composite equals the chosen one'
+- 'comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z | the chosen composite'
+- 'id-hom : (A : U) (x : A) → hom A x x | the identity arrow'
 - 'diagonal : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b | the diagonal of the transformed square'
-- 'comp-witness : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom2 A x y b f (ϕ y v) (diagonal …) | the lower triangle of the transformed square'
-statement: 'comp-is-segal A is-segal-A x y b f (ϕ y v) = diagonal A is-segal-A a b x y f v ϕ'
-title: The lower coherence
+- 'id-witness : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom2 A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) (diagonal …) | the upper triangle of the transformed square'
+statement: 'comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) = diagonal A is-segal-A a b x y f v ϕ'
+title: The upper coherence
 ---
 
-A commutative triangle says its hypotenuse is a composite. So the lower witness says the diagonal is the composite of `f` and `ϕ y v`. But the chosen composite is the unique one, by uniqueness of composites. Apply it to the witness to turn the triangle into an equality: the chosen composite of `f` and `ϕ y v` equals the diagonal. Build it.
-
-(The `#def` name `comp-coherence` abbreviates the geodesic's `coherence-witness-comp-transformation-id-codomain-square`.)
+Turn the upper triangle into an equality, exactly as you did for the lower one: apply uniqueness of composites to the upper witness. It gives the chosen composite of `ϕ x` of the composite with the identity at `b`, equated to the diagonal. The identity rides along on the left for now; the next level removes it. Build it.\n\n(The `#def` name `id-coherence` abbreviates the geodesic's `coherence-witness-id-transformation-id-codomain-square`.)
 
 ```rzk prelude
 #lang rzk-1
@@ -107,36 +107,39 @@ A commutative triangle says its hypotenuse is a composite. So the lower witness 
   ( ϕ : (z : A) → hom A z a → hom A z b)
   : hom A x b
   := \ t → square-transformation A is-segal-A a b x y f v ϕ t t
-#def comp-witness
+#def id-witness
   ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : hom2 A x y b f (ϕ y v) (diagonal A is-segal-A a b x y f v ϕ)
-  := \ (t , s) → square-transformation A is-segal-A a b x y f v ϕ t s
+  : hom2 A x b b
+    (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b)
+    (diagonal A is-segal-A a b x y f v ϕ)
+  := \ (t , s) → square-transformation A is-segal-A a b x y f v ϕ s t
 ```
 
 ```rzk template
-#def comp-coherence
+#def id-coherence
   ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (comp-is-segal A is-segal-A x y b f (ϕ y v))
+  : (comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
     = (diagonal A is-segal-A a b x y f v ϕ)
   := ?
 ```
 
 ```rzk solution
-#def comp-coherence
+#def id-coherence
   ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (comp-is-segal A is-segal-A x y b f (ϕ y v))
+  : (comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
     = (diagonal A is-segal-A a b x y f v ϕ)
-  := uniqueness-comp-is-segal A is-segal-A x y b f (ϕ y v)
+  := uniqueness-comp-is-segal A is-segal-A x b b
+       (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b)
        (diagonal A is-segal-A a b x y f v ϕ)
-       (comp-witness A is-segal-A a b x y f v ϕ)
+       (id-witness A is-segal-A a b x y f v ϕ)
 ```
 
 ## Conclusion
 
-One of the two relations is now an equality of arrows. The upper half is next: read its triangle, turn it into an equality, then simplify.
+The upper half is now an equality of arrows, like the lower. It still carries a spurious identity on the left. Stripping that identity with the right unit law is the last step before the two halves combine.
