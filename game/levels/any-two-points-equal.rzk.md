@@ -1,18 +1,17 @@
 ---
 hints:
-- text: 'Both `x` and `y` are a contraction path away from the center. Route a path from `x` to the center to `y`.'
-- text: '`homotopy-contraction A is-contr-A x : center = x`, so its reversal is `x = center`. Concatenate with `homotopy-contraction A is-contr-A y : center = y`: `concat A x (center-contraction A is-contr-A) y (rev A (center-contraction A is-contr-A) x (homotopy-contraction A is-contr-A x)) (homotopy-contraction A is-contr-A y)`.'
+- text: 'Both `x` and `y` are reached by a contraction path from the center, so the two paths share their domain. That is exactly what `zag-zig-concat` joins.'
+- text: '`homotopy-contraction A is-contr-A x : center = x` and `homotopy-contraction A is-contr-A y : center = y` share the center. Join them: `zag-zig-concat A x (center-contraction A is-contr-A) y (homotopy-contraction A is-contr-A x) (homotopy-contraction A is-contr-A y)`.'
 id: any-two-points-equal
 inventory:
 - 'center-contraction   : (A : U) (is-contr-A : is-contr A) → A | the center of a contractible type'
 - 'homotopy-contraction : (A : U) (is-contr-A : is-contr A) (z : A) → center-contraction A is-contr-A = z | the path from the center to any point'
-- 'rev    : (A : U) (x y : A) (p : x = y) → y = x | reverse a path'
-- 'concat : (A : U) (x y z : A) (p : x = y) (q : y = z) → x = z | concatenate two paths'
+- 'zag-zig-concat       : (A : U) (x y z : A) (p : y = x) (q : y = z) → x = z | join two paths that share a domain'
 statement: x = y
 title: Any two points are equal
 ---
 
-If a type is contractible, any two of its points are equal. Both `x` and `y` are a path away from the center, so route a path from `x` to the center and on to `y`.
+If a type is contractible, any two of its points are equal. Both `x` and `y` are reached by a contraction path from the center, so the two paths share their domain. Join them with `zag-zig-concat`.
 
 ```rzk prelude
 #lang rzk-1
@@ -36,6 +35,10 @@ If a type is contractible, any two of its points are equal. Both `x` and `y` are
   ( A : U) ( x y z : A) ( p : x = y) ( q : y = z)
   : x = z
   := ind-path A y (\ z' q' → x = z') p z q
+#def zag-zig-concat
+  ( A : U) ( x y z : A) ( p : y = x) ( q : y = z)
+  : x = z
+  := concat A x y z (rev A y x p) q
 #def center-contraction (A : U) (is-contr-A : is-contr A)
   : A
   := first is-contr-A
@@ -53,11 +56,10 @@ If a type is contractible, any two of its points are equal. Both `x` and `y` are
 ```rzk solution
 #def eq-is-contr (A : U) (is-contr-A : is-contr A) (x y : A)
   : x = y
-  := concat A x (center-contraction A is-contr-A) y
-       (rev A (center-contraction A is-contr-A) x (homotopy-contraction A is-contr-A x))
-       (homotopy-contraction A is-contr-A y)
+  := zag-zig-concat A x (center-contraction A is-contr-A) y
+       (homotopy-contraction A is-contr-A x) (homotopy-contraction A is-contr-A y)
 ```
 
 ## Conclusion
 
-Reverse one contraction path and concatenate it with the other: `x` to the center to `y`. Contractibility collapses every point into one.
+The two contraction paths share the center as their domain, so `zag-zig-concat` joins them into a path `x = y`. Contractibility collapses every point into one.
