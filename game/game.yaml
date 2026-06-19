@@ -62,6 +62,31 @@ sections:
       - functions-act-on-paths
   - prose:
       file: levels/sigma-summary.md
+- id: contractibility
+  title: Contractible types
+  items:
+  - prose:
+      file: levels/contractibility-intro.md
+  - puzzle:
+      file: levels/center-of-contraction.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the contractible-types chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/06-contractible.rzk/
+  - puzzle:
+      file: levels/the-contraction.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the contractible-types chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/06-contractible.rzk/
+  - puzzle:
+      file: levels/any-two-points-equal.rzk.md
+      prereqs:
+      - path-reversal
+      - path-concatenation
+      - the-contraction
+  - prose:
+      file: levels/contractibility-summary.md
 - id: morphisms
   title: Morphisms and triangles
   items:
