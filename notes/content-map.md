@@ -36,7 +36,9 @@ Status is **port** (copy/trim an existing engine level) or **new** (author from 
 
 ### Chapter I — HoTT foundations
 
-These sections need no shapes. Their preludes are small and self-contained, so they keep recheck fast and let players warm up on plain HoTT before the directed layer. We propose giving the *definitions and the axiom* in the prelude (`Σ`, `is-contr`, `is-equiv`, `FunExt`) and making the *lemmas* the puzzles (`ap`, `concat`, `rev`, the zig-zag concatenations, `first-path-Σ`, `homotopy-contraction`, `eq-htpy`). See the open decision below.
+These sections need no shapes. Their preludes are small and self-contained, so they keep recheck fast and let players warm up on plain HoTT before the directed layer. The definitions and the axiom are given in the prelude (`Σ`, `is-contr`, `is-equiv`, `FunExt`); the lemmas are the puzzles (`ap`, `concat`, `rev`, the zig-zag concatenations, `first-path-Σ`, `homotopy-contraction`, `eq-htpy`).
+
+A HoTT-fluent player should not have to grind through lemmas they already know. So each lemma puzzle is marked `role: pretest` with `remedies` pointing to the relevant sHoTT page. The player can then mark it "I already know this", which satisfies it as a `prereq` for the directed sections downstream (authoring.md: a puzzle is satisfied once solved or once its pre-test is marked known). The chapter is thus fast-trackable lemma by lemma: novices solve and learn, experts skip ahead. The granularity is a dial — every lemma a pretest, or one representative pretest per section — settled in the conventions note.
 
 **1. Paths and path algebra — new.** `refl`, then `ap` (functions act on paths), `rev` (inversion), `concat` (composition), and the `zig-zag-concat` / `zag-zig-concat` reassociations the naturality proofs later need.
 
@@ -124,14 +126,11 @@ Per the handoff, engine gaps are handled case by case as they arise. The candida
 - Gating scans only proof bodies, intersected with prelude names, minus inventory tokens. A gated solution must use only granted names.
 - Π-types: grouped binders `(x y : A)` are allowed only in `#def` parameters, not in a raw Π-type expression. Keep goal types single-binder.
 
-## Open decisions (for the user)
+## Settled decisions (user, 2026-06-19)
 
-- **HoTT lemmas: puzzles or given.** The proposal makes the lemmas (`ap`, `concat`, `rev`, the zig-zag concatenations, `first-path-Σ`, `homotopy-contraction`, `eq-htpy`) playable puzzles and gives only the definitions and the funext axiom in preludes. The alternative is to give some lemmas outright and keep chapter I short. This trades chapter I's length against how much HoTT the game teaches versus assumes.
-- **First milestone slicing.** With the map in hand: (a) author a thin vertical slice straight to the first Yoneda-flavoured payoff and ship it live, then iterate; or (b) port the directed sections (5–7, optionally associativity) as the opening, then build the rest. The handoff recommends (b) then (a).
+- **HoTT lemmas are puzzles.** The lemmas are authored as playable puzzles; only the definitions and the funext axiom are given in preludes. Each lemma puzzle is a `pretest` with `remedies` to sHoTT, so a fluent player can fast-track it (see Chapter I).
+- **Port then extend.** Build order: port the directed sections first (Chapter II — morphisms, functions, composition, and optionally associativity) as the proven opening, then author the new content outward, Chapter I (HoTT foundations) and Chapter III (Yoneda). The game's final order is I → II → III; only the build order differs. The vertical-slice option is deferred.
 
 ## Next sub-phase
 
-Two natural entry points, depending on the slicing call:
-
-- Under (b), port section 5 (Morphisms and triangles) over the scaffold level — proves the port pipeline before new content.
-- Under a HoTT-first reading, author section 1 (Paths and path algebra) — proves the new-content pipeline on small, shape-free preludes.
+Port-then-extend is chosen, so the next sub-phase ports section 5 (Morphisms and triangles) over the scaffold level — `my-id`, `const-triangle`, `rut`, `lut` — proving the port pipeline before the new content begins. The prose, teaching, and naming conventions are settled first (see `notes/conventions.md`).
