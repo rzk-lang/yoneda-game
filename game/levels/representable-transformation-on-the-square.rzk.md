@@ -87,4 +87,4 @@ Now push the square through the transformation. For each `t`, the column `\ s â†
 
 ## Conclusion
 
-The transformed square is again a square in `A`, now with codomain `b`. Like the original, it splits into two triangular halves, each a composition relation. Reading those halves back out is what remains.
+The transformed square is again a square in `A`, now with codomain `b`. Like the original, it splits into two triangular halves along a diagonal. Naming that diagonal comes next.

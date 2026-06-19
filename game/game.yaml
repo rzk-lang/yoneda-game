@@ -197,9 +197,13 @@ sections:
       - codomain-square
       - function-on-a-morphism
   - puzzle:
-      file: levels/lower-composition-witness.rzk.md
+      file: levels/diagonal-of-the-square.rzk.md
       prereqs:
       - representable-transformation-on-the-square
+  - puzzle:
+      file: levels/lower-composition-witness.rzk.md
+      prereqs:
+      - diagonal-of-the-square
   - puzzle:
       file: levels/lower-composition-coherence.rzk.md
       prereqs:

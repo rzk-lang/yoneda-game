@@ -1,17 +1,15 @@
 ---
 hints:
-- text: 'A `hom2` is a map out of `Δ²`, of the form `\ (t , s) → ?`. You already have the transformed square; restrict it to the triangle.'
-- text: 'The lower triangle reads the square directly, in the same coordinate order: `\ (t , s) → square-transformation A is-segal-A a b x y f v ϕ t s`.'
-id: lower-composition-witness
+- text: 'The diagonal walks the transformed square with both coordinates equal: `\ t → ?`, the square evaluated at `(t , t)`.'
+- text: 'Set both arguments to the same `t`: `\ t → square-transformation A is-segal-A a b x y f v ϕ t t`.'
+id: diagonal-of-the-square
 inventory:
 - 'square-transformation : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → (t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v) , t ≡ 1₂ ↦ ϕ y v ] | the square pushed through ϕ'
-statement: 'hom2 A x y b f (ϕ y v) (diagonal A is-segal-A a b x y f v ϕ)'
-title: The lower triangle
+statement: 'hom A x b'
+title: The diagonal arrow
 ---
 
-The transformed square has two triangular halves, and each is a commutative triangle, a `hom2`. Read off the lower half. It witnesses that the square's diagonal, the arrow `diagonal` you just built, is the composite of `f` followed by `ϕ y v`. The triangle is just the transformed square restricted to the lower simplex `Δ²`. Build it.
-
-(The `#def` name `comp-witness` abbreviates the geodesic's `witness-comp-transformation-id-codomain-square`.)
+The transformed square has a diagonal, the arrow from its bottom-left corner `x` to its top-right corner `b`, traced by setting the two coordinates equal. Name it. This diagonal is the composite that both triangular halves of the square will be measured against, so it earns a definition of its own. Walk the square along `s ≡ t`. Build it.\n\n(The `#def` name `diagonal` is short for the geodesic's `diagonal-square-representable-transformation`.)
 
 ```rzk prelude
 #lang rzk-1
@@ -69,34 +67,26 @@ The transformed square has two triangular halves, and each is a commutative tria
   : ( t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v)
                               , t ≡ 1₂ ↦ ϕ y v ]
   := \ t → ϕ (f t) (\ s → codomain-square A is-segal-A a b x y f v t s)
+```
+
+```rzk template
 #def diagonal
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
+  ( f : hom A x y) ( v : hom A y a)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : hom A x b
+  := ?
+```
+
+```rzk solution
+#def diagonal
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
   : hom A x b
   := \ t → square-transformation A is-segal-A a b x y f v ϕ t t
 ```
 
-```rzk template
-#def comp-witness
-  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : hom2 A x y b f (ϕ y v)
-    (diagonal A is-segal-A a b x y f v ϕ)
-  := ?
-```
-
-```rzk solution
-#def comp-witness
-  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : hom2 A x y b f (ϕ y v)
-    (diagonal A is-segal-A a b x y f v ϕ)
-  := \ (t , s) → square-transformation A is-segal-A a b x y f v ϕ t s
-```
-
 ## Conclusion
 
-The lower triangle is a composition witness: it says the diagonal is a composite of `f` and `ϕ y v`. A witness like this is exactly what uniqueness of composites consumes.
+The diagonal is the composite arrow the transformed square exhibits. Each triangular half will be shown to compose to this same diagonal, and matching the two is exactly what naturality asserts.
