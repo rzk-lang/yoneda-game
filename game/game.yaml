@@ -181,3 +181,39 @@ sections:
       - uniqueness-of-composites
   - prose:
       file: levels/unit-laws-summary.md
+- id: naturality
+  title: Naturality of representable transformations
+  items:
+  - prose:
+      file: levels/naturality-intro.md
+  - puzzle:
+      file: levels/codomain-square.rzk.md
+      prereqs:
+      - composition-witness
+      - right-unit-triangle
+  - puzzle:
+      file: levels/representable-transformation-on-the-square.rzk.md
+      prereqs:
+      - codomain-square
+      - function-on-a-morphism
+  - puzzle:
+      file: levels/lower-composition-witness.rzk.md
+      prereqs:
+      - representable-transformation-on-the-square
+  - puzzle:
+      file: levels/lower-composition-coherence.rzk.md
+      prereqs:
+      - lower-composition-witness
+      - uniqueness-of-composites
+  - puzzle:
+      file: levels/simplifying-the-upper-coherence.rzk.md
+      prereqs:
+      - lower-composition-coherence
+      - right-unit-law
+  - puzzle:
+      file: levels/naturality-of-representable-transformation.rzk.md
+      prereqs:
+      - lower-composition-coherence
+      - simplifying-the-upper-coherence
+  - prose:
+      file: levels/naturality-summary.md
