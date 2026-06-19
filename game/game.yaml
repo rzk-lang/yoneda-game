@@ -1,13 +1,19 @@
 title: The ∞-Yoneda Game
 
-# SCAFFOLD. This is a placeholder table of contents with a single starter level,
-# enough to build and deploy the game through rzk-game-action. The real content,
-# following Riehl's geodesic to the Yoneda lemma, is added in later PRs.
 sections:
-- id: warmup
-  title: Warm-up
+- id: morphisms
+  title: Morphisms and triangles
   items:
   - prose:
-      file: levels/intro.md
+      file: levels/morphisms-intro.md
   - puzzle:
-      file: levels/identity.rzk.md
+      file: levels/identity-morphism.rzk.md
+  - puzzle:
+      file: levels/constant-triangle.rzk.md
+  - puzzle:
+      file: levels/right-unit-triangle.rzk.md
+  - puzzle:
+      file: levels/left-unit-triangle.rzk.md
+      role: extra
+  - prose:
+      file: levels/morphisms-summary.md
