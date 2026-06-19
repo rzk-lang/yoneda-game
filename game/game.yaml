@@ -159,3 +159,25 @@ sections:
       - composite-arrow
   - prose:
       file: levels/composition-summary.md
+- id: unit-laws
+  title: Identity and unit laws
+  items:
+  - prose:
+      file: levels/unit-laws-intro.md
+  - puzzle:
+      file: levels/uniqueness-of-composites.rzk.md
+      prereqs:
+      - composition-witness
+      - path-on-first-components
+      - the-contraction
+  - puzzle:
+      file: levels/right-unit-law.rzk.md
+      prereqs:
+      - uniqueness-of-composites
+  - puzzle:
+      file: levels/left-unit-law.rzk.md
+      role: extra
+      prereqs:
+      - uniqueness-of-composites
+  - prose:
+      file: levels/unit-laws-summary.md
