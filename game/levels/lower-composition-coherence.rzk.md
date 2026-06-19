@@ -13,7 +13,9 @@ statement: 'comp-is-segal A is-segal-A x y b f (ϕ y v) = diagonal A is-segal-A 
 title: The lower coherence
 ---
 
-A commutative triangle says its hypotenuse is a composite. So the lower witness says the diagonal is the composite of `f` and `ϕ y v`. But the chosen composite is the unique one, by uniqueness of composites. Apply it to the witness to turn the triangle into an equality: the chosen composite of `f` and `ϕ y v` equals the diagonal. The `#def` name `comp-coherence` abbreviates `coherence-witness-comp-transformation-id-codomain-square`. Build it.
+A commutative triangle says its hypotenuse is a composite. So the lower witness says the diagonal is the composite of `f` and `ϕ y v`. But the chosen composite is the unique one, by uniqueness of composites. Apply it to the witness to turn the triangle into an equality: the chosen composite of `f` and `ϕ y v` equals the diagonal. Build it.
+
+(The `#def` name `comp-coherence` abbreviates the geodesic's `coherence-witness-comp-transformation-id-codomain-square`.)
 
 ```rzk prelude
 #lang rzk-1

@@ -12,7 +12,9 @@ statement: '(t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-
 title: The codomain square
 ---
 
-The proof of naturality begins with a square. Fix a fiberwise transformation `ϕ` and a composable pair `f : x → y` and `v : y → a`. The goal pins the square's four edges: its bottom is `f`, its right is `v`, its left is the composite of `f` and `v`, and its top is the constant arrow at `a`. Fill the interior with two triangles glued along the diagonal `s ≡ t`. The lower triangle `s ≤ t` is the composition witness of `f` and `v`; the upper triangle `t ≤ s` is the degenerate unit triangle on the composite. The tope split `recOR` does the gluing. The `#def` name `codomain-square` is short for the geodesic's `id-codomain-square`. Build it.
+The proof of naturality begins with a square. Fix a fiberwise transformation `ϕ` and a composable pair `f : x → y` and `v : y → a`. The goal pins the square's four edges: its bottom is `f`, its right is `v`, its left is the composite of `f` and `v`, and its top is the constant arrow at `a`. Fill the interior with two triangles glued along the diagonal `s ≡ t`. The lower triangle `s ≤ t` is the composition witness of `f` and `v`; the upper triangle `t ≤ s` is the degenerate unit triangle on the composite. The tope split `recOR` does the gluing. Build it.
+
+(The `#def` name `codomain-square` is short for the geodesic's `id-codomain-square`.)
 
 ```rzk prelude
 #lang rzk-1

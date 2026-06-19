@@ -17,7 +17,9 @@ statement: 'ϕ x (comp-is-segal A is-segal-A x y a f v) = diagonal A is-segal-A 
 title: Simplifying the upper coherence
 ---
 
-The square's upper half gives a second relation. Its witness and coherence are supplied in the prelude as `id-witness` and `id-coherence`, the mirror images of the two you just built. The coherence `id-coherence` says the composite of `ϕ x (v ∘ f)` with the identity equals the diagonal. But composing with the identity changes nothing, by the right unit law you proved earlier. Cancel it. Both that unit law and `id-coherence` start from the same identity composite, so `zag-zig-concat` joins them. The `#def` name `simplified-id-coherence` abbreviates `simplified-coherence-witness-id-transformation-id-codomain-square`. Build it.
+The square's upper half gives a second relation. Its witness and coherence are supplied in the prelude as `id-witness` and `id-coherence`, the mirror images of the two you just built. The coherence `id-coherence` says the composite of `ϕ x (v ∘ f)` with the identity equals the diagonal. But composing with the identity changes nothing, by the right unit law you proved earlier. Cancel it. Both that unit law and `id-coherence` start from the same identity composite, so `zag-zig-concat` joins them. Build it.
+
+(The `#def` name `simplified-id-coherence` abbreviates the geodesic's `simplified-coherence-witness-id-transformation-id-codomain-square`.)
 
 ```rzk prelude
 #lang rzk-1

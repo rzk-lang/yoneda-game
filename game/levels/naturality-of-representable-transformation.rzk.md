@@ -16,7 +16,9 @@ statement: 'comp-is-segal A is-segal-A x y b f (ϕ y v) = ϕ x (comp-is-segal A 
 title: Naturality is automatic
 ---
 
-Everything is in place. `comp-coherence` says the composite of `f` and `ϕ y v` equals the diagonal. `simplified-id-coherence` says the value of `ϕ` on the composite of `f` and `v` equals the same diagonal. Two arrows equal to a common third are equal to each other. Join the two equalities through the diagonal with `zig-zag-concat`, and naturality falls out: `ϕ` carries the composite to the composite, with no naturality hypothesis assumed. The `#def` name `naturality` abbreviates `Naturality-contravariant-fiberwise-representable-transformation`. Build it.
+Everything is in place. `comp-coherence` says the composite of `f` and `ϕ y v` equals the diagonal. `simplified-id-coherence` says the value of `ϕ` on the composite of `f` and `v` equals the same diagonal. Two arrows equal to a common third are equal to each other. Join the two equalities through the diagonal with `zig-zag-concat`, and naturality falls out: `ϕ` carries the composite to the composite, with no naturality hypothesis assumed. Build it.
+
+(The `#def` name `naturality` abbreviates the geodesic's `Naturality-contravariant-fiberwise-representable-transformation`.)
 
 ```rzk prelude
 #lang rzk-1

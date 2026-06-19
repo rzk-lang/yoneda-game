@@ -9,7 +9,9 @@ statement: 'hom2 A x y b f (ϕ y v) (diagonal A is-segal-A a b x y f v ϕ)'
 title: The lower triangle
 ---
 
-The transformed square has two triangular halves, and each is a commutative triangle, a `hom2`. Read off the lower half. It witnesses that the square's diagonal, named `diagonal` in the prelude, is the composite of `f` followed by `ϕ y v`. The triangle is just the transformed square restricted to the lower simplex `Δ²`. The `#def` name `comp-witness` abbreviates `witness-comp-transformation-id-codomain-square`. Build it.
+The transformed square has two triangular halves, and each is a commutative triangle, a `hom2`. Read off the lower half. It witnesses that the square's diagonal, named `diagonal` in the prelude, is the composite of `f` followed by `ϕ y v`. The triangle is just the transformed square restricted to the lower simplex `Δ²`. Build it.
+
+(The `#def` name `comp-witness` abbreviates the geodesic's `witness-comp-transformation-id-codomain-square`.)
 
 ```rzk prelude
 #lang rzk-1

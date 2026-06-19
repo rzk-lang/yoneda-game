@@ -10,7 +10,9 @@ statement: '(t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A 
 title: Transforming the square
 ---
 
-Now push the square through the transformation. For each `t`, the column `\ s → codomain-square … t s` is an arrow into `a`, so `ϕ` carries it to an arrow into `b`. Apply `ϕ` column by column. The goal pins the two end columns: at `t ≡ 0₂` the value is `ϕ x` of the composite, and at `t ≡ 1₂` it is `ϕ y v`. The `#def` name `square-transformation` is short for `square-representable-transformation`. Build it.
+Now push the square through the transformation. For each `t`, the column `\ s → codomain-square … t s` is an arrow into `a`, so `ϕ` carries it to an arrow into `b`. Apply `ϕ` column by column. The goal pins the two end columns: at `t ≡ 0₂` the value is `ϕ x` of the composite, and at `t ≡ 1₂` it is `ϕ y v`. Build it.
+
+(The `#def` name `square-transformation` is short for the geodesic's `square-representable-transformation`.)
 
 ```rzk prelude
 #lang rzk-1
