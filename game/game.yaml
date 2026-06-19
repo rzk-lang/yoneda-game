@@ -36,3 +36,16 @@ sections:
       - function-on-a-point
   - prose:
       file: levels/functions-summary.md
+- id: composition
+  title: Composition in Segal types
+  items:
+  - prose:
+      file: levels/composition-intro.md
+  - puzzle:
+      file: levels/composite-arrow.rzk.md
+  - puzzle:
+      file: levels/composition-witness.rzk.md
+      prereqs:
+      - composite-arrow
+  - prose:
+      file: levels/composition-summary.md
