@@ -17,3 +17,22 @@ sections:
       role: extra
   - prose:
       file: levels/morphisms-summary.md
+- id: functions
+  title: Functions act on cells
+  items:
+  - prose:
+      file: levels/functions-intro.md
+  - puzzle:
+      file: levels/function-on-a-point.rzk.md
+      role: pretest
+      remedies:
+      - label: 'Review: Morphisms and triangles'
+        section: morphisms
+      - label: 'sHoTT: the Segal-types chapter'
+        url: https://rzk-lang.github.io/sHoTT/simplicial-hott/05-segal-types.rzk/
+  - puzzle:
+      file: levels/function-on-a-morphism.rzk.md
+      prereqs:
+      - function-on-a-point
+  - prose:
+      file: levels/functions-summary.md
