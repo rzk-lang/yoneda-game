@@ -51,4 +51,4 @@ Building the composite arrow was only half of the center of contraction. Its sec
 
 ## Conclusion
 
-The composite and its witnessing triangle are the two halves of one center of contraction. Together they show that in a Segal type, composition exists and the triangle proving it comes for free.
+The composite and its witnessing triangle are the two halves of one center of contraction. The Segal hypothesis supplies both at once. The first projection is the arrow, the second is the triangle that proves it.
