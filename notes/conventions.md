@@ -71,7 +71,7 @@ Players meet the sHoTT names and notation for the first time in the game, so we 
 
 ## Deviations
 
-We record deviations on two axes, both in the prose at the point of deviation and, for the notable ones, in the in-game naming note.
+We record deviations on two axes, both in the prose at the point of deviation and, for the notable ones, in the in-game naming note. The full name cross-walk between the game, sHoTT, the geodesic, and standard terminology lives in `notes/glossary.md`.
 
 - **From the sHoTT library.** When we rename or shorten a library identifier (for example, a short `#def` name standing in for a longer library name), we note it.
 - **From Riehl's geodesic.** When we depart from the source's naming, notation, or structure (for example, lowercasing `Hom` to `hom`, using `is-segal` for `Is-pre-∞-category`, or superscript `Δ¹` for subscript `Δ₁`), we note it.
