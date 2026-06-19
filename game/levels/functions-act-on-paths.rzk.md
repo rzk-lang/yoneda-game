@@ -9,7 +9,7 @@ statement: f x = f y
 title: Functions act on paths
 ---
 
-A function `f : A → B` does to paths what it did to morphisms: it carries them along. Given `p : x = y`, applying `f` gives a path `f x = f y`. Build it by path induction, reducing to the case where `p` is `refl` and both ends are `f x`.
+A function `f : A → B` respects identifications: a path `p : x = y` gives a path `f x = f y`. Build it by path induction, reducing to the case where `p` is `refl` and both ends are `f x`.
 
 ```rzk prelude
 #lang rzk-1
