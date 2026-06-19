@@ -1,6 +1,44 @@
 title: The ∞-Yoneda Game
 
 sections:
+- id: paths
+  title: Paths and path algebra
+  items:
+  - prose:
+      file: levels/paths-intro.md
+  - puzzle:
+      file: levels/reflexivity.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the paths chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
+  - puzzle:
+      file: levels/functions-act-on-paths.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the paths chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
+  - puzzle:
+      file: levels/path-reversal.rzk.md
+      role: pretest
+      remedies:
+      - label: 'sHoTT: the paths chapter'
+        url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
+  - puzzle:
+      file: levels/path-concatenation.rzk.md
+  - puzzle:
+      file: levels/zig-zag-concatenation.rzk.md
+      prereqs:
+      - path-reversal
+      - path-concatenation
+  - puzzle:
+      file: levels/zag-zig-concatenation.rzk.md
+      role: extra
+      prereqs:
+      - path-reversal
+      - path-concatenation
+  - prose:
+      file: levels/paths-summary.md
 - id: morphisms
   title: Morphisms and triangles
   items:
