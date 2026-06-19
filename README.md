@@ -1,8 +1,8 @@
-# yoneda-game (scaffold)
+# yoneda-game (work in progress)
 
 The **∞-Yoneda Game** — an interactive Rzk game following Emily Riehl's [geodesic to the Yoneda lemma](https://emilyriehl.github.io/yoneda/master/simplicial-hott/13-yoneda-geodesic.rzk/), built on the [`rzk-game`](https://github.com/rzk-lang/rzk-game) engine.
 
-> **Status: scaffold.** This repo currently holds a single starter level, enough to build and deploy through the engine end to end. The real content is added over later updates.
+> **Status: work in progress.** The first section (Morphisms and triangles) is in place; the rest of the geodesic to the Yoneda lemma is added over later updates.
 
 ## How it works
 
