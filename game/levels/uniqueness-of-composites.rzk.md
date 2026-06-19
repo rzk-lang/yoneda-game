@@ -1,8 +1,10 @@
 ---
 hints:
 - text: 'Contractibility says more than "a composite exists": every point of the filler space equals the center. The center is the chosen composite paired with its witness, and your own `(h , alpha)` is another point of the same space. So there is a path between the two points, and its first component is the equality of arrows you want.'
-- text: 'Build it with `first-path-Σ`, which turns a path of pairs into a path of their first components. The shape is `first-path-Σ (hom A x z) (hom2 A x y z f g) (comp-is-segal A is-segal-A x y z f g , witness-comp-is-segal A is-segal-A x y z f g) (h , alpha) ?`; the one remaining hole is the path of pairs. You pass `hom A x z` and `hom2 A x y z f g` because rzk has no implicit arguments.'
-- text: 'That path of pairs is the contraction applied to your point: `homotopy-contraction (Σ (k : hom A x z) , hom2 A x y z f g k) (is-segal-A x y z f g) (h , alpha)`.'
+- text: 'The tool is `first-path-Σ`, which turns a path of pairs into a path of their first components. It takes five arguments, `first-path-Σ ? ? ? ? ?`: the index type, the family, the two endpoints, and a path between them.'
+- text: 'The first two arguments are the index type and the family of the filler space: `first-path-Σ (hom A x z) (hom2 A x y z f g) ? ? ?`. You pass them by hand because rzk has no implicit arguments.'
+- text: 'The next two are the endpoints, the center and your point: `first-path-Σ (hom A x z) (hom2 A x y z f g) (comp-is-segal A is-segal-A x y z f g , witness-comp-is-segal A is-segal-A x y z f g) (h , alpha) ?`. Only the path between them is left.'
+- text: 'That last path is the contraction applied to your point: `homotopy-contraction (Σ (k : hom A x z) , hom2 A x y z f g k) (is-segal-A x y z f g) (h , alpha)`.'
   when-goal: '= h'
 id: uniqueness-of-composites
 inventory:
