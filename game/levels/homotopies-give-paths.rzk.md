@@ -1,7 +1,8 @@
 ---
 hints:
-- text: 'Function extensionality, `funext X A f g`, is the proof that `htpy-eq` is an equivalence. An equivalence packages a retraction, and its first component is the inverse map you want.'
-- text: 'Read off the retraction: `first (first (funext X A f g))`.'
+- text: 'Function extensionality, `funext X A f g`, is the proof that `htpy-eq` is an equivalence. The inverse map you want is its retraction.'
+- text: 'If you are stuck, start with the shape `first (first (funext ? ? ? ?))` and fill in the four arguments.'
+- text: 'The four arguments are `X A f g`: `first (first (funext X A f g))`.'
 id: homotopies-give-paths
 inventory:
 - 'funext : FunExt | the function extensionality axiom (htpy-eq is an equivalence)'
