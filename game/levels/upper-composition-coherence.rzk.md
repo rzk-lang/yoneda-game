@@ -15,7 +15,9 @@ statement: 'comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x
 title: The upper coherence
 ---
 
-Turn the upper triangle into an equality, exactly as you did for the lower one: apply uniqueness of composites to the upper witness. It gives the chosen composite of `ϕ x` of the composite with the identity at `b`, equated to the diagonal. The identity rides along on the left for now; the next level removes it. Build it.\n\n(The `#def` name `id-coherence` abbreviates the geodesic's `coherence-witness-id-transformation-id-codomain-square`.)
+Turn the upper triangle into an equality, exactly as you did for the lower one: apply uniqueness of composites to the upper witness. It gives the chosen composite of `ϕ x` of the composite with the identity at `b`, equated to the diagonal. The identity rides along on the left for now; the next level removes it. Build it.
+
+(The `#def` name `id-coherence` abbreviates the geodesic's `coherence-witness-id-transformation-id-codomain-square`.)
 
 ```rzk prelude
 #lang rzk-1

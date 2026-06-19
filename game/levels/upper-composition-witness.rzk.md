@@ -9,7 +9,9 @@ statement: 'hom2 A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A
 title: The upper triangle
 ---
 
-The square's other half is the upper triangle, the mirror of the one you just read off. Its two edges are `ϕ x` of the composite of `f` and `v` and the identity at `b`, and its hypotenuse is the diagonal. Read it off the transformed square again, but with the coordinates swapped: the upper triangle `t ≤ s` is the square evaluated at `(s , t)`. Build it.\n\n(The `#def` name `id-witness` abbreviates the geodesic's `witness-id-transformation-id-codomain-square`.)
+The square's other half is the upper triangle, the mirror of the one you just read off. Its two edges are `ϕ x` of the composite of `f` and `v` and the identity at `b`, and its hypotenuse is the diagonal. Read it off the transformed square again, but with the coordinates swapped: the upper triangle `t ≤ s` is the square evaluated at `(s , t)`. Build it.
+
+(The `#def` name `id-witness` abbreviates the geodesic's `witness-id-transformation-id-codomain-square`.)
 
 ```rzk prelude
 #lang rzk-1

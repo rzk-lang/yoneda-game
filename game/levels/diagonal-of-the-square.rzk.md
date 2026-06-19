@@ -9,7 +9,9 @@ statement: 'hom A x b'
 title: The diagonal arrow
 ---
 
-The transformed square has a diagonal, the arrow from its bottom-left corner `x` to its top-right corner `b`, traced by setting the two coordinates equal. Name it. This diagonal is the composite that both triangular halves of the square will be measured against, so it earns a definition of its own. Walk the square along `s ≡ t`. Build it.\n\n(The `#def` name `diagonal` is short for the geodesic's `diagonal-square-representable-transformation`.)
+The transformed square has a diagonal, the arrow from its bottom-left corner `x` to its top-right corner `b`, traced by setting the two coordinates equal. Name it. This diagonal is the composite that both triangular halves of the square will be measured against, so it earns a definition of its own. Walk the square along `s ≡ t`. Build it.
+
+(The `#def` name `diagonal` is short for the geodesic's `diagonal-square-representable-transformation`.)
 
 ```rzk prelude
 #lang rzk-1
