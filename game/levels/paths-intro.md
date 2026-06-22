@@ -8,4 +8,4 @@ This chapter builds the homotopy-type-theory toolkit the later proofs lean on, s
 
 These lemmas are standard, so most are marked as pre-tests. If you already know your path algebra, mark them known and move on. Path concatenation and the zig-zag stay mandatory, and the zig-zag is the move the later naturality proofs need.
 
-*By the end you will be able to:* reverse a path, concatenate paths, apply a function to a path, and join two paths that share an endpoint.
+*By the end you will be able to:* use path induction, reverse a path, concatenate paths, apply a function to a path, and join two paths that share an endpoint.

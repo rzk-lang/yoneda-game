@@ -12,6 +12,8 @@ title: Zig-zag concatenation
 
 Two paths can point at the same target: `p : x = y` and `q : z = y` both end at `y`. To join them into a path `x = z`, reverse `q` and concatenate. This is the move the later naturality proof leans on.
 
+`rev` and `concat` are already in scope from the earlier levels. Click the prelude for a reminder of how they are typed.
+
 ```rzk prelude
 #lang rzk-1
 #def ind-path

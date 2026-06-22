@@ -11,6 +11,8 @@ title: Functions act on paths
 
 A function `f : A → B` respects identifications: a path `p : x = y` gives a path `f x = f y`. Build it by path induction, reducing to the case where `p` is `refl` and both ends are `f x`.
 
+You supply the motive `C` to `ind-path` as a function written with a λ. The notation `\ b q → …` introduces its two arguments, an endpoint `b : A` and a path `q : x = b`, and `\` is Rzk's shorthand for λ.
+
 ```rzk prelude
 #lang rzk-1
 #def ind-path

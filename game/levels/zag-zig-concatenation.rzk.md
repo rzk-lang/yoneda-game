@@ -12,6 +12,8 @@ title: Zag-zig concatenation
 
 The mirror image: `p : y = x` and `q : y = z` share their domain `y`. Reverse `p` and concatenate with `q` to get a path `x = z`.
 
+As before, `rev` and `concat` carry over from the earlier levels. Click the prelude for a reminder of how they are typed.
+
 ```rzk prelude
 #lang rzk-1
 #def ind-path
