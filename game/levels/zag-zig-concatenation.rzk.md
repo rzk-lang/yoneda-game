@@ -4,8 +4,12 @@ hints:
 - text: '`rev A y x p : x = y`, so `concat A x y z (rev A y x p) q : x = z`.'
 id: zag-zig-concatenation
 inventory:
-- 'rev    : (A : U) (x y : A) (p : x = y) → y = x | reverse a path'
-- 'concat : (A : U) (x y z : A) (p : x = y) (q : y = z) → x = z | concatenate two paths'
+- name: rev
+  type: '(A : U) (x y : A) (p : x = y) → y = x'
+  synopsis: 'reverse a path'
+- name: concat
+  type: '(A : U) (x y z : A) (p : x = y) (q : y = z) → x = z'
+  synopsis: 'concatenate two paths'
 statement: x = z
 title: Zag-zig concatenation
 ---

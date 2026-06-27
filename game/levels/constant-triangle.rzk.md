@@ -1,7 +1,9 @@
 ---
 id: constant-triangle
 inventory:
-- 'id-hom : (A : U) → (x : A) → hom A x x | the identity arrow'
+- name: id-hom
+  type: '(A : U) → (x : A) → hom A x x'
+  synopsis: 'the identity arrow'
 statement: hom2 A x x x (id-hom A x) (id-hom A x) (id-hom A x)
 title: The constant triangle
 ---

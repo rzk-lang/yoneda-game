@@ -5,7 +5,9 @@ hints:
   when-goal: '↦ f t'
 id: right-unit-triangle
 inventory:
-- 'id-hom : (A : U) → (x : A) → hom A x x | the identity arrow'
+- name: id-hom
+  type: '(A : U) → (x : A) → hom A x x'
+  synopsis: 'the identity arrow'
 statement: hom2 A x y y f (id-hom A y) f
 title: The right-unit triangle
 ---

@@ -5,7 +5,9 @@ hints:
   when-goal: 'Δ¹ t'
 id: identity-morphism
 inventory:
-- 'id-hom : (A : U) → (x : A) → hom A x x | the identity arrow (an alternative)'
+- name: id-hom
+  type: '(A : U) → (x : A) → hom A x x'
+  synopsis: 'the identity arrow (an alternative)'
 statement: hom A x x
 title: The identity morphism
 ---

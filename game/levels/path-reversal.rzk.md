@@ -4,7 +4,9 @@ hints:
 - text: 'The motive sends an endpoint `b` and a path `x = b` to `b = x`. At `refl` that is `x = x`, so the base case is `refl`. Build it with `ind-path A x (\ b q → b = x) refl y p`.'
 id: path-reversal
 inventory:
-- 'ind-path : (A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p | path induction'
+- name: ind-path
+  type: '(A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p'
+  synopsis: 'path induction'
 statement: y = x
 title: Path reversal
 ---

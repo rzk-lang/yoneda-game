@@ -5,7 +5,9 @@ hints:
 - text: 'The whole term is `\ t → ϕ (f t) (\ s → codomain-square A is-segal-A a b x y f v t s)`.'
 id: representable-transformation-on-the-square
 inventory:
-- 'codomain-square : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) → (t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s , t ≡ 1₂ ↦ v s , s ≡ 0₂ ↦ f t , s ≡ 1₂ ↦ a ] | the square with edges f, v, the composite, and the constant at a'
+- name: codomain-square
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) → (t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s , t ≡ 1₂ ↦ v s , s ≡ 0₂ ↦ f t , s ≡ 1₂ ↦ a ]'
+  synopsis: 'the square with edges f, v, the composite, and the constant at a'
 statement: '(t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v) , t ≡ 1₂ ↦ ϕ y v ]'
 title: Transforming the square
 ---

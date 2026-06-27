@@ -4,9 +4,15 @@ hints:
 - text: '`homotopy-contraction A is-contr-A x : center = x` and `homotopy-contraction A is-contr-A y : center = y` share the center. Join them: `zag-zig-concat A x (center-contraction A is-contr-A) y (homotopy-contraction A is-contr-A x) (homotopy-contraction A is-contr-A y)`.'
 id: any-two-points-equal
 inventory:
-- 'center-contraction   : (A : U) (is-contr-A : is-contr A) → A | the center of a contractible type'
-- 'homotopy-contraction : (A : U) (is-contr-A : is-contr A) (z : A) → center-contraction A is-contr-A = z | the path from the center to any point'
-- 'zag-zig-concat       : (A : U) (x y z : A) (p : y = x) (q : y = z) → x = z | join two paths that share a domain'
+- name: center-contraction
+  type: '(A : U) (is-contr-A : is-contr A) → A'
+  synopsis: 'the center of a contractible type'
+- name: homotopy-contraction
+  type: '(A : U) (is-contr-A : is-contr A) (z : A) → center-contraction A is-contr-A = z'
+  synopsis: 'the path from the center to any point'
+- name: zag-zig-concat
+  type: '(A : U) (x y z : A) (p : y = x) (q : y = z) → x = z'
+  synopsis: 'join two paths that share a domain'
 statement: x = y
 title: Any two points are equal
 ---

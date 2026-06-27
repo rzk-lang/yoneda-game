@@ -4,7 +4,9 @@ hints:
 - text: 'At `refl` the homotopy is `\ x → refl`. Build it: `ind-path ((x : X) → A x) f (\ g0 p0 → (x : X) → f x = g0 x) (\ x → refl) g p`.'
 id: a-homotopy-from-a-path
 inventory:
-- 'ind-path : (A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p | path induction'
+- name: ind-path
+  type: '(A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p'
+  synopsis: 'path induction'
 statement: '(x : X) → f x = g x'
 title: A homotopy from a path
 ---

@@ -4,7 +4,9 @@ hints:
 - text: 'Apply `ap` with the function `\ z → first z`: `ap (Σ (a : A) , B a) A s t (\ z → first z) e`.'
 id: path-on-first-components
 inventory:
-- 'ap : (A B : U) (x y : A) (f : A → B) (p : x = y) → f x = f y | apply a function to a path'
+- name: ap
+  type: '(A B : U) (x y : A) (f : A → B) (p : x = y) → f x = f y'
+  synopsis: 'apply a function to a path'
 statement: 'first s = first t'
 title: A path on first components
 ---

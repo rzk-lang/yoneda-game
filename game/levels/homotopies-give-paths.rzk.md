@@ -5,7 +5,9 @@ hints:
 - text: 'The four arguments are `X A f g`: `first (first (funext X A f g))`.'
 id: homotopies-give-paths
 inventory:
-- 'funext : FunExt | the function extensionality axiom (htpy-eq is an equivalence)'
+- name: funext
+  type: 'FunExt'
+  synopsis: 'the function extensionality axiom (htpy-eq is an equivalence)'
 statement: '((x : X) → f x = g x) → (f = g)'
 title: Homotopies give paths
 ---

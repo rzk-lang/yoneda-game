@@ -6,12 +6,24 @@ hints:
   when-goal: '= (ϕ x'
 id: naturality-of-representable-transformation
 inventory:
-- 'zig-zag-concat : (A : U) (x y z : A) (p : x = y) (q : z = y) → x = z | join two paths that share a target'
-- 'comp-coherence : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x y b f (ϕ y v) = diagonal … | the lower coherence'
-- 'simplified-id-coherence : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → ϕ x (comp-is-segal A is-segal-A x y a f v) = diagonal … | the simplified upper coherence'
-- 'diagonal : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b | the diagonal of the transformed square'
-- 'comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z | the chosen composite'
-- 'hom : (A : U) (x y : A) → U | the type of arrows, passed as an explicit type argument'
+- name: zig-zag-concat
+  type: '(A : U) (x y z : A) (p : x = y) (q : z = y) → x = z'
+  synopsis: 'join two paths that share a target'
+- name: comp-coherence
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x y b f (ϕ y v) = diagonal …'
+  synopsis: 'the lower coherence'
+- name: simplified-id-coherence
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → ϕ x (comp-is-segal A is-segal-A x y a f v) = diagonal …'
+  synopsis: 'the simplified upper coherence'
+- name: diagonal
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b'
+  synopsis: 'the diagonal of the transformed square'
+- name: comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z'
+  synopsis: 'the chosen composite'
+- name: hom
+  type: '(A : U) (x y : A) → U'
+  synopsis: 'the type of arrows, passed as an explicit type argument'
 statement: 'comp-is-segal A is-segal-A x y b f (ϕ y v) = ϕ x (comp-is-segal A is-segal-A x y a f v)'
 title: Naturality is automatic
 ---
