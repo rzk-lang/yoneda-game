@@ -1,6 +1,4 @@
 ---
-forbidden:
-- idJ
 hints:
 - text: 'Every point has a trivial path to itself. That path is `refl`.'
 id: reflexivity
