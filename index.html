@@ -181,6 +181,14 @@
     .err p { margin: 0 0 .4rem; }
     .errdump { max-height: 14rem; overflow: auto; margin: 0;
                background: #fff3f3; font-size: .85rem; white-space: pre; }
+    /* "Edited since last check" — the shown result is stale until the next Check. */
+    .check-stale { margin: 0 0 .4rem; color: #9a6700; font-size: .85rem; }
+    /* The "Copy issue report" control in the checker-crash panel: a link-like
+       button (no button chrome), so it reads as an inline action. */
+    .copy-report { background: none; border: none; padding: 0; margin: 0;
+                   font: inherit; color: #991b1b; cursor: pointer;
+                   text-decoration: underline; }
+    .copy-report:hover { color: #c0392b; }
     /* Hints: hidden by default, revealed one at a time (or auto-surfaced by a
        matching goal). Each card is a soft amber box; the reveal is a dashed
        "ask for help" affordance, distinct from the solid control buttons. */
@@ -198,10 +206,14 @@
     .inventory-wrap { margin: .3rem 0 .6rem; }
     .inventory-wrap > summary { cursor: pointer; color: #555; font-size: .9rem; }
     .inventory { margin: .4rem 0 0; padding-left: 1.1rem;
-                 font-family: ui-monospace, monospace; font-size: .85rem; color: #333; }
+                 font-size: .85rem; color: #333; }
     .inventory li { margin: .1rem 0; }
+    /* Name + type read as code; the synopsis reads as prose beside it. */
+    .inv-sig { font-family: ui-monospace, monospace; }
+    .inv-syn { color: #555; }
     .gate { padding: .5rem .7rem; border-radius: 6px; margin: .4rem 0; }
     .gate p { margin: 0; }
+    .gate .mono { font-family: ui-monospace, monospace; }
     .gate-soft { background: #fff7e6; border: 1px solid #f0c674; color: #7a5c00; }
     .gate-hard { background: #fdecea; border: 1px solid #e0a0a0; color: #8a1c1c; }
     .ok  { background: #dfd; padding: .6rem; border-radius: 6px; }
@@ -232,9 +244,32 @@
     .mapbar-wrap.open .map-toggle { background: #cde; border-color: #79c; }
     .mapbar-loc { flex: 1; font-weight: 600; color: #444; font-size: .9rem;
                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .mapbar-progress { font-size: .8rem; color: #888; white-space: nowrap;
+    .mapbar-progress { display: flex; align-items: center; gap: .4rem;
+                       font-size: .8rem; color: #888; white-space: nowrap;
                        font-variant-numeric: tabular-nums; }
+    .mapbar-bar { width: 4rem; height: .4rem; border-radius: 999px;
+                  background: #e8e8e8; overflow: hidden; flex: none; }
+    .mapbar-bar-fill { height: 100%; background: #79c; border-radius: 999px;
+                       transition: width .2s ease; }
+    .mapbar-count { white-space: nowrap; }
     .mapbar-progress.done { color: #2a7a2a; font-weight: 600; }
+    .mapbar-progress.done .mapbar-bar-fill { background: #2a7a2a; }
+    /* Starred-extras suffix: muted hollow star until every bonus is done, then
+       gold. Sits beside the required count, never folding into it. */
+    .extra-count { font-size: .8rem; font-variant-numeric: tabular-nums;
+                   font-weight: normal; color: #b0a06a; white-space: nowrap; }
+    .extra-count.done { color: #c79a00; font-weight: 600; }
+    .breadcrumb .extra-count { margin-left: .4rem; }
+    /* The breadcrumb's required count turns green when the section is done. */
+    .breadcrumb-count { font-variant-numeric: tabular-nums; }
+    .breadcrumb-count.done { color: #2a7a2a; font-weight: 600; }
+    /* Groups a required count with its extras suffix on the right of a row. */
+    .count-group { display: flex; align-items: baseline; gap: .4rem; }
+    /* The persistent "How holes work" help link, at the right of the bar. */
+    .map-help { background: none; border: 1px solid #ddd; border-radius: 6px;
+                cursor: pointer; font-size: .8rem; padding: .25rem .6rem;
+                margin: 0; white-space: nowrap; color: #555; }
+    .map-help:hover { border-color: #999; color: #222; }
     /* The full map drops below the bar only when open. */
     .mapbar-wrap .sections { margin-top: .5rem;
         animation: mapdrop .12s ease-out; }
@@ -244,6 +279,13 @@
        progress count and a row of slot buttons. */
     .sections { display: flex; flex-direction: column; gap: .5rem;
                 margin: .2rem 0 .4rem; }
+    /* A chapter heading above the sections it groups in the picker. */
+    .chapter-head { display: flex; align-items: baseline; justify-content: space-between;
+                    gap: .5rem; font-size: .8rem; font-weight: 700; letter-spacing: .04em;
+                    text-transform: uppercase; color: #667; margin: .5rem 0 -.1rem; }
+    .chapter-head:first-child { margin-top: 0; }
+    .chapter-count { font-variant-numeric: tabular-nums; }
+    .chapter-count.done { color: #2a7a2a; }
     .section-block { border: 1px solid #eee; border-radius: 8px; padding: .4rem .5rem;
                      background: #fafafa; }
     .section-head { display: flex; align-items: baseline; justify-content: space-between;
@@ -271,6 +313,7 @@
                    border-radius: 6px; cursor: pointer; }
     .pretest-btn:hover { border-color: #999; }
     .pretest-btn.chosen { background: #2563eb; color: #fff; border-color: #1d4ed8; }
+    .pretest-note { margin: .4rem 0 0; font-size: .85em; color: #6a5a22; }
     /* Lock panel and remediation links (shown when a prereq is "not familiar"). */
     .locked { margin: .5rem 0; padding: .7rem .8rem; background: #f7f1f1;
               border: 1px solid #e0cccc; border-radius: 8px; }
