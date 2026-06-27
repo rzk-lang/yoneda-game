@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'Unfold the two maps: evaluating the rebuilt transformation at the identity gives the composite of the identity at `a` with `v`. That is exactly what the left unit law `id-comp-is-segal` simplifies.'
 - text: 'Apply the left unit law to `v`: `id-comp-is-segal A is-segal-A a b v`.'

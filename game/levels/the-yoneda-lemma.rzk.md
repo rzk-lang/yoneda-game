@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: '`is-equiv` is a pair: a retraction and a section. Both use `contra-yon` as the inverse map. The shape is `((contra-yon …, contra-yon-evid …), (contra-yon …, contra-evid-yon …))`.'
 - text: 'The retraction half is `(contra-yon A is-segal-A a b , contra-yon-evid A is-segal-A a b)`.'

@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'This is a `concat` of two paths in `hom A x b`, through the midpoint `ϕ x (comp-is-segal A is-segal-A x a a f (id-hom A a))`. The first path is naturality; the second transports the right unit law through `ϕ x`.'
 - text: 'The first path is naturality applied to `f` and the identity: `naturality A is-segal-A a b x a f (id-hom A a) ϕ`.'

@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'Both sides equal the diagonal: `comp-coherence` gives the left side, `simplified-id-coherence` gives the right. `zig-zag-concat` joins two paths into a shared target.'
 - text: 'The shape is `zig-zag-concat (hom A x b) (comp-is-segal A is-segal-A x y b f (ϕ y v)) (diagonal A is-segal-A a b x y f v ϕ) (ϕ x (comp-is-segal A is-segal-A x y a f v)) ? ?`.'

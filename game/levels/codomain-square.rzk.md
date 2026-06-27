@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'A square `Δ¹ → Δ¹ → A` is built by `\ t s → recOR ( s ≤ t ↦ ? , t ≤ s ↦ ? )`. The two cases are the two triangular halves, and they must agree on the diagonal `s ≡ t`.'
 - text: 'The lower half `s ≤ t` is the composition witness of `f` and `v`, reparametrized: `(witness-comp-is-segal A is-segal-A x y a f v) (t , s)`.'

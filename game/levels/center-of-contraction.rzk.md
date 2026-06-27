@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'An `is-contr` proof is a pair. Its first component is the center: `first is-contr-A`.'
 id: center-of-contraction

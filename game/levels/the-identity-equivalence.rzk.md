@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: '`is-equiv` is a pair of pairs. Each half is a map back to the source paired with a homotopy. For the identity, the map back is the identity and the homotopy is `refl` everywhere.'
 - text: 'Build `((\ a → a , \ a → refl) , (\ a → a , \ a → refl))`: a retraction and a section, each the identity with a `refl` homotopy.'

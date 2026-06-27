@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'This is `eq-htpy` over the arrow `f`. Its domain is `hom A x a` and its codomain family is the constant `\ f → hom A x b`.'
 - text: 'The two functions are the rebuilt transformation and `ϕ`, each at `x`: `\ f → (contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f` and `\ f → ϕ x f`.'

@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'A path `p : f = g` between functions: induct on `p`. The motive, for a function `g0` and a path `f = g0`, is the homotopy `(x : X) → f x = g0 x`.'
 - text: 'At `refl` the homotopy is `\ x → refl`. Build it: `ind-path ((x : X) → A x) f (\ g0 p0 → (x : X) → f x = g0 x) (\ x → refl) g p`.'

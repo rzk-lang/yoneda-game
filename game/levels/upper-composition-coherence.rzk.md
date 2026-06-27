@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'The same move as the lower coherence, applied to the upper witness `id-witness`: `uniqueness-comp-is-segal …`.'
 - text: 'The two composable edges are `ϕ x` of the composite and the identity at `b`: `uniqueness-comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) ? ?`.'

@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'The second projection of a pair `p` is `second p`. Its type is the fiber `B (first p)`.'
 id: second-projection

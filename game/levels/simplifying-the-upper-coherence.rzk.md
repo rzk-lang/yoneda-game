@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'The shared arrow is `ϕ x` of the composite of `f` and `v`, post-composed with the identity at `b`. The right unit law sends it to `ϕ x` of the composite; `id-coherence` sends it to the diagonal. `zag-zig-concat` joins two paths out of that shared source.'
 - text: 'The shared source is `comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b)`, with endpoints `ϕ x (comp-is-segal A is-segal-A x y a f v)` and the diagonal. You pass `hom A x b` as the explicit type argument.'

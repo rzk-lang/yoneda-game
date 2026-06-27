@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'The contracting homotopy is the second component of the proof: `second is-contr-A`.'
 id: the-contraction

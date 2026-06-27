@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 id: function-on-a-point
 statement: hom B (g x) (g x)
 title: A function on a point

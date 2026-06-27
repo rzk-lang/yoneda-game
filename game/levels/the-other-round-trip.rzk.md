@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'This is `eq-htpy` again, now over the object `x`. Its domain is `A` and its codomain family is `\ x → (hom A x a → hom A x b)`.'
 - text: 'The two transformations are the rebuilt one and `ϕ`: `contra-yon A is-segal-A a b (contra-evid A a b ϕ)` and `ϕ`.'

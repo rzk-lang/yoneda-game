@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'This is uniqueness of composites again, exactly as in the unit-law section. The witness `comp-witness …` proves the diagonal is a composite of `f` and `ϕ y v`; uniqueness identifies it with the chosen composite.'
 - text: 'Apply `uniqueness-comp-is-segal` to `f` and `ϕ y v`: `uniqueness-comp-is-segal A is-segal-A x y b f (ϕ y v) ? ?`.'

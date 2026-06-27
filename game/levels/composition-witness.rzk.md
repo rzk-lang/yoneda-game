@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 id: composition-witness
 statement: hom2 A x y z f g (first (first (is-segal-A x y z f g)))
 title: The composition witness

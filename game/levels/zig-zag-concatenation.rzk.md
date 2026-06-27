@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'You have `p : x = y` and `q : z = y`, both ending at `y`. Reverse `q`, then concatenate.'
 - text: '`rev A z y q : y = z`, so `concat A x y z p (rev A z y q) : x = z`.'

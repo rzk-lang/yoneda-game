@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'The result lives in `hom A a b`. You have `ϕ` and the objects `a`, `b`. Evaluate `ϕ` at the object `a`, then at an arrow into `a`.'
 - text: 'The arrow you feed is the identity at `a`: `\ ϕ → ϕ a (id-hom A a)`.'

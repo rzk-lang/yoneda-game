@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'Function extensionality, `funext X A f g`, is the proof that `htpy-eq` is an equivalence. The inverse map you want is its retraction.'
 - text: 'If you are stuck, start with the shape `first (first (funext ? ? ? ?))` and fill in the four arguments.'

@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'You are given `v : hom A a b` and must produce a transformation. Introduce the object and arrow it acts on: `\ v z f → ?`, with `f : hom A z a`.'
 - text: 'Compose `f : z → a` with `v : a → b` to get an arrow `z → b`: `comp-is-segal A is-segal-A z a b f v`.'

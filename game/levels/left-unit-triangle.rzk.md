@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 id: left-unit-triangle
 inventory:
 - name: id-hom

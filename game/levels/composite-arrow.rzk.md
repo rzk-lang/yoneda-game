@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 id: composite-arrow
 statement: hom A x z
 title: Composition
