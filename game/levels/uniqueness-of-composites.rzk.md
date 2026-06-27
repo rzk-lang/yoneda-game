@@ -8,12 +8,24 @@ hints:
   when-goal: '= h'
 id: uniqueness-of-composites
 inventory:
-- 'first-path-Σ         : (A : U) (B : A → U) (s t : Σ (a : A) , B a) (e : s = t) → first s = first t | the path induced on first components'
-- 'homotopy-contraction : (A : U) (is-contr-A : is-contr A) (z : A) → center-contraction A is-contr-A = z | the path from the center to any point'
-- 'comp-is-segal        : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z | the chosen composite'
-- 'witness-comp-is-segal: (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom2 A x y z f g (comp-is-segal A is-segal-A x y z f g) | the triangle witnessing the chosen composite'
-- 'hom                  : (A : U) (x y : A) → U | the type of arrows x → y, passed as an explicit type argument'
-- 'hom2                 : (A : U) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) → U | the type of filler triangles, passed as an explicit type argument'
+- name: first-path-Σ
+  type: '(A : U) (B : A → U) (s t : Σ (a : A) , B a) (e : s = t) → first s = first t'
+  synopsis: 'the path induced on first components'
+- name: homotopy-contraction
+  type: '(A : U) (is-contr-A : is-contr A) (z : A) → center-contraction A is-contr-A = z'
+  synopsis: 'the path from the center to any point'
+- name: comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z'
+  synopsis: 'the chosen composite'
+- name: witness-comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom2 A x y z f g (comp-is-segal A is-segal-A x y z f g)'
+  synopsis: 'the triangle witnessing the chosen composite'
+- name: hom
+  type: '(A : U) (x y : A) → U'
+  synopsis: 'the type of arrows x → y, passed as an explicit type argument'
+- name: hom2
+  type: '(A : U) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) → U'
+  synopsis: 'the type of filler triangles, passed as an explicit type argument'
 statement: comp-is-segal A is-segal-A x y z f g = h
 title: Uniqueness of composites
 ---

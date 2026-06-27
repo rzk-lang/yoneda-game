@@ -5,9 +5,15 @@ hints:
 - text: 'The upper half `t ≤ s` is the unit triangle on the composite, reparametrized: `(comp-id-witness A x a (comp-is-segal A is-segal-A x y a f v)) (s , t)`.'
 id: codomain-square
 inventory:
-- 'witness-comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom2 A x y z f g (comp-is-segal A is-segal-A x y z f g) | the triangle witnessing the chosen composite'
-- 'comp-id-witness : (A : U) (x y : A) (f : hom A x y) → hom2 A x y y f (id-hom A y) f | the right-unit triangle'
-- 'comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z | the chosen composite'
+- name: witness-comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom2 A x y z f g (comp-is-segal A is-segal-A x y z f g)'
+  synopsis: 'the triangle witnessing the chosen composite'
+- name: comp-id-witness
+  type: '(A : U) (x y : A) (f : hom A x y) → hom2 A x y y f (id-hom A y) f'
+  synopsis: 'the right-unit triangle'
+- name: comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z'
+  synopsis: 'the chosen composite'
 statement: '(t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s , t ≡ 1₂ ↦ v s , s ≡ 0₂ ↦ f t , s ≡ 1₂ ↦ a ]'
 title: The codomain square
 ---

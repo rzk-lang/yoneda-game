@@ -6,13 +6,27 @@ hints:
   when-goal: '= (diagonal'
 id: simplifying-the-upper-coherence
 inventory:
-- 'zag-zig-concat : (A : U) (x y z : A) (p : y = x) (q : y = z) → x = z | join two paths that share a source'
-- 'comp-id-is-segal : (A : U) (is-segal-A : is-segal A) (x y : A) (f : hom A x y) → comp-is-segal A is-segal-A x y y f (id-hom A y) = f | the right unit law'
-- 'id-coherence : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) = diagonal … | the upper coherence'
-- 'diagonal : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b | the diagonal of the transformed square'
-- 'comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z | the chosen composite'
-- 'id-hom : (A : U) (x : A) → hom A x x | the identity arrow'
-- 'hom : (A : U) (x y : A) → U | the type of arrows, passed as an explicit type argument'
+- name: zag-zig-concat
+  type: '(A : U) (x y z : A) (p : y = x) (q : y = z) → x = z'
+  synopsis: 'join two paths that share a source'
+- name: comp-id-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y : A) (f : hom A x y) → comp-is-segal A is-segal-A x y y f (id-hom A y) = f'
+  synopsis: 'the right unit law'
+- name: id-coherence
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) = diagonal …'
+  synopsis: 'the upper coherence'
+- name: diagonal
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b'
+  synopsis: 'the diagonal of the transformed square'
+- name: comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z'
+  synopsis: 'the chosen composite'
+- name: id-hom
+  type: '(A : U) (x : A) → hom A x x'
+  synopsis: 'the identity arrow'
+- name: hom
+  type: '(A : U) (x y : A) → U'
+  synopsis: 'the type of arrows, passed as an explicit type argument'
 statement: 'ϕ x (comp-is-segal A is-segal-A x y a f v) = diagonal A is-segal-A a b x y f v ϕ'
 title: Simplifying the upper coherence
 ---

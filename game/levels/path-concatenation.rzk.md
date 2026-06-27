@@ -4,7 +4,9 @@ hints:
 - text: 'The motive sends an endpoint `c` and a path `y = c` to `x = c`. The base case is `p` itself, not `refl`. Build it with `ind-path A y (\ c r → x = c) p z q`.'
 id: path-concatenation
 inventory:
-- 'ind-path : (A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p | path induction'
+- name: ind-path
+  type: '(A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p'
+  synopsis: 'path induction'
 statement: x = z
 title: Path concatenation
 ---

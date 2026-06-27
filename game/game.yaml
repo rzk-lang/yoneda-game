@@ -1,238 +1,244 @@
 title: The ∞-Yoneda Game
 
-sections:
-- id: paths
-  title: Paths and path algebra
-  items:
-  - prose:
-      file: levels/paths-intro.md
-  - puzzle:
-      file: levels/reflexivity.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the paths chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
-  - puzzle:
-      file: levels/path-induction.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the paths chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
-  - puzzle:
-      file: levels/functions-act-on-paths.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the paths chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
-  - puzzle:
-      file: levels/path-reversal.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the paths chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
-  - puzzle:
-      file: levels/path-concatenation.rzk.md
-  - puzzle:
-      file: levels/zig-zag-concatenation.rzk.md
-      prereqs:
-      - path-reversal
-      - path-concatenation
-  - puzzle:
-      file: levels/zag-zig-concatenation.rzk.md
-      role: extra
-      prereqs:
-      - path-reversal
-      - path-concatenation
-  - prose:
-      file: levels/paths-summary.md
-- id: sigma
-  title: Sigma types
-  items:
-  - prose:
-      file: levels/sigma-intro.md
-  - puzzle:
-      file: levels/forming-a-pair.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the Sigma-types chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/05-sigma.rzk/
-  - puzzle:
-      file: levels/second-projection.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the Sigma-types chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/05-sigma.rzk/
-  - puzzle:
-      file: levels/path-on-first-components.rzk.md
-      prereqs:
-      - functions-act-on-paths
-  - prose:
-      file: levels/sigma-summary.md
-- id: contractibility
-  title: Contractible types
-  items:
-  - prose:
-      file: levels/contractibility-intro.md
-  - puzzle:
-      file: levels/center-of-contraction.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the contractible-types chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/06-contractible.rzk/
-  - puzzle:
-      file: levels/the-contraction.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the contractible-types chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/06-contractible.rzk/
-  - puzzle:
-      file: levels/any-two-points-equal.rzk.md
-      prereqs:
-      - path-reversal
-      - path-concatenation
-      - the-contraction
-  - prose:
-      file: levels/contractibility-summary.md
-- id: equivalences
-  title: Equivalences and function extensionality
-  items:
-  - prose:
-      file: levels/equivalences-intro.md
-  - puzzle:
-      file: levels/the-identity-equivalence.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the equivalences chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/03-equivalences.rzk/
-  - puzzle:
-      file: levels/a-homotopy-from-a-path.rzk.md
-      role: pretest
-      remedies:
-      - label: 'sHoTT: the equivalences chapter'
-        url: https://rzk-lang.github.io/sHoTT/hott/03-equivalences.rzk/
-  - puzzle:
-      file: levels/homotopies-give-paths.rzk.md
-      prereqs:
-      - the-identity-equivalence
-      - a-homotopy-from-a-path
-  - prose:
-      file: levels/equivalences-summary.md
-- id: morphisms
-  title: Morphisms and triangles
-  items:
-  - prose:
-      file: levels/morphisms-intro.md
-  - puzzle:
-      file: levels/identity-morphism.rzk.md
-  - puzzle:
-      file: levels/constant-triangle.rzk.md
-  - puzzle:
-      file: levels/right-unit-triangle.rzk.md
-  - puzzle:
-      file: levels/left-unit-triangle.rzk.md
-      role: extra
-  - prose:
-      file: levels/morphisms-summary.md
-- id: functions
-  title: Functions act on cells
-  items:
-  - prose:
-      file: levels/functions-intro.md
-  - puzzle:
-      file: levels/function-on-a-point.rzk.md
-      role: pretest
-      remedies:
-      - label: 'Review: Morphisms and triangles'
-        section: morphisms
-      - label: 'sHoTT: the Segal-types chapter'
-        url: https://rzk-lang.github.io/sHoTT/simplicial-hott/05-segal-types.rzk/
-  - puzzle:
-      file: levels/function-on-a-morphism.rzk.md
-      prereqs:
-      - function-on-a-point
-  - prose:
-      file: levels/functions-summary.md
-- id: composition
-  title: Composition in Segal types
-  items:
-  - prose:
-      file: levels/composition-intro.md
-  - puzzle:
-      file: levels/composite-arrow.rzk.md
-  - puzzle:
-      file: levels/composition-witness.rzk.md
-      prereqs:
-      - composite-arrow
-  - prose:
-      file: levels/composition-summary.md
-- id: unit-laws
-  title: Identity and unit laws
-  items:
-  - prose:
-      file: levels/unit-laws-intro.md
-  - puzzle:
-      file: levels/uniqueness-of-composites.rzk.md
-      prereqs:
-      - composition-witness
-      - path-on-first-components
-      - the-contraction
-  - puzzle:
-      file: levels/right-unit-law.rzk.md
-      prereqs:
-      - uniqueness-of-composites
-  - puzzle:
-      file: levels/left-unit-law.rzk.md
-      role: extra
-      prereqs:
-      - uniqueness-of-composites
-  - prose:
-      file: levels/unit-laws-summary.md
-- id: naturality
-  title: Naturality of representable transformations
-  items:
-  - prose:
-      file: levels/naturality-intro.md
-  - puzzle:
-      file: levels/codomain-square.rzk.md
-      prereqs:
-      - composition-witness
-      - right-unit-triangle
-  - puzzle:
-      file: levels/representable-transformation-on-the-square.rzk.md
-      prereqs:
-      - codomain-square
-      - function-on-a-morphism
-  - puzzle:
-      file: levels/diagonal-of-the-square.rzk.md
-      prereqs:
-      - representable-transformation-on-the-square
-  - puzzle:
-      file: levels/lower-composition-witness.rzk.md
-      prereqs:
-      - diagonal-of-the-square
-  - puzzle:
-      file: levels/lower-composition-coherence.rzk.md
-      prereqs:
-      - lower-composition-witness
-      - uniqueness-of-composites
-  - puzzle:
-      file: levels/upper-composition-witness.rzk.md
-      prereqs:
-      - lower-composition-witness
-  - puzzle:
-      file: levels/upper-composition-coherence.rzk.md
-      prereqs:
-      - upper-composition-witness
-      - uniqueness-of-composites
-  - puzzle:
-      file: levels/simplifying-the-upper-coherence.rzk.md
-      prereqs:
-      - upper-composition-coherence
-      - right-unit-law
-  - puzzle:
-      file: levels/naturality-of-representable-transformation.rzk.md
-      prereqs:
-      - lower-composition-coherence
-      - simplifying-the-upper-coherence
-  - prose:
-      file: levels/naturality-summary.md
+chapters:
+- title: Homotopy type theory
+  sections:
+  - id: paths
+    title: Paths and path algebra
+    items:
+    - prose:
+        file: levels/paths-intro.md
+    - puzzle:
+        file: levels/reflexivity.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the paths chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
+    - puzzle:
+        file: levels/path-induction.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the paths chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
+    - puzzle:
+        file: levels/functions-act-on-paths.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the paths chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
+    - puzzle:
+        file: levels/path-reversal.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the paths chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/01-paths.rzk/
+    - puzzle:
+        file: levels/path-concatenation.rzk.md
+    - puzzle:
+        file: levels/zig-zag-concatenation.rzk.md
+        prereqs:
+        - path-reversal
+        - path-concatenation
+    - puzzle:
+        file: levels/zag-zig-concatenation.rzk.md
+        role: extra
+        prereqs:
+        - path-reversal
+        - path-concatenation
+    - prose:
+        file: levels/paths-summary.md
+  - id: sigma
+    title: Sigma types
+    items:
+    - prose:
+        file: levels/sigma-intro.md
+    - puzzle:
+        file: levels/forming-a-pair.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the Sigma-types chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/05-sigma.rzk/
+    - puzzle:
+        file: levels/second-projection.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the Sigma-types chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/05-sigma.rzk/
+    - puzzle:
+        file: levels/path-on-first-components.rzk.md
+        prereqs:
+        - functions-act-on-paths
+    - prose:
+        file: levels/sigma-summary.md
+  - id: contractibility
+    title: Contractible types
+    items:
+    - prose:
+        file: levels/contractibility-intro.md
+    - puzzle:
+        file: levels/center-of-contraction.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the contractible-types chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/06-contractible.rzk/
+    - puzzle:
+        file: levels/the-contraction.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the contractible-types chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/06-contractible.rzk/
+    - puzzle:
+        file: levels/any-two-points-equal.rzk.md
+        prereqs:
+        - path-reversal
+        - path-concatenation
+        - the-contraction
+    - prose:
+        file: levels/contractibility-summary.md
+  - id: equivalences
+    title: Equivalences and function extensionality
+    items:
+    - prose:
+        file: levels/equivalences-intro.md
+    - puzzle:
+        file: levels/the-identity-equivalence.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the equivalences chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/03-equivalences.rzk/
+    - puzzle:
+        file: levels/a-homotopy-from-a-path.rzk.md
+        role: pretest
+        remedies:
+        - label: 'sHoTT: the equivalences chapter'
+          url: https://rzk-lang.github.io/sHoTT/hott/03-equivalences.rzk/
+    - puzzle:
+        file: levels/homotopies-give-paths.rzk.md
+        prereqs:
+        - the-identity-equivalence
+        - a-homotopy-from-a-path
+    - prose:
+        file: levels/equivalences-summary.md
+- title: Synthetic ∞-categories
+  sections:
+  - id: morphisms
+    title: Morphisms and triangles
+    items:
+    - prose:
+        file: levels/morphisms-intro.md
+    - puzzle:
+        file: levels/identity-morphism.rzk.md
+    - puzzle:
+        file: levels/constant-triangle.rzk.md
+    - puzzle:
+        file: levels/right-unit-triangle.rzk.md
+    - puzzle:
+        file: levels/left-unit-triangle.rzk.md
+        role: extra
+    - prose:
+        file: levels/morphisms-summary.md
+  - id: functions
+    title: Functions act on cells
+    items:
+    - prose:
+        file: levels/functions-intro.md
+    - puzzle:
+        file: levels/function-on-a-point.rzk.md
+        role: pretest
+        remedies:
+        - label: 'Review: Morphisms and triangles'
+          section: morphisms
+        - label: 'sHoTT: the Segal-types chapter'
+          url: https://rzk-lang.github.io/sHoTT/simplicial-hott/05-segal-types.rzk/
+    - puzzle:
+        file: levels/function-on-a-morphism.rzk.md
+        prereqs:
+        - function-on-a-point
+    - prose:
+        file: levels/functions-summary.md
+  - id: composition
+    title: Composition in Segal types
+    items:
+    - prose:
+        file: levels/composition-intro.md
+    - puzzle:
+        file: levels/composite-arrow.rzk.md
+    - puzzle:
+        file: levels/composition-witness.rzk.md
+        prereqs:
+        - composite-arrow
+    - prose:
+        file: levels/composition-summary.md
+  - id: unit-laws
+    title: Identity and unit laws
+    items:
+    - prose:
+        file: levels/unit-laws-intro.md
+    - puzzle:
+        file: levels/uniqueness-of-composites.rzk.md
+        prereqs:
+        - composition-witness
+        - path-on-first-components
+        - the-contraction
+    - puzzle:
+        file: levels/right-unit-law.rzk.md
+        prereqs:
+        - uniqueness-of-composites
+    - puzzle:
+        file: levels/left-unit-law.rzk.md
+        role: extra
+        prereqs:
+        - uniqueness-of-composites
+    - prose:
+        file: levels/unit-laws-summary.md
+- title: Naturality
+  sections:
+  - id: naturality
+    title: Naturality of representable transformations
+    items:
+    - prose:
+        file: levels/naturality-intro.md
+    - puzzle:
+        file: levels/codomain-square.rzk.md
+        prereqs:
+        - composition-witness
+        - right-unit-triangle
+    - puzzle:
+        file: levels/representable-transformation-on-the-square.rzk.md
+        prereqs:
+        - codomain-square
+        - function-on-a-morphism
+    - puzzle:
+        file: levels/diagonal-of-the-square.rzk.md
+        prereqs:
+        - representable-transformation-on-the-square
+    - puzzle:
+        file: levels/lower-composition-witness.rzk.md
+        prereqs:
+        - diagonal-of-the-square
+    - puzzle:
+        file: levels/lower-composition-coherence.rzk.md
+        prereqs:
+        - lower-composition-witness
+        - uniqueness-of-composites
+    - puzzle:
+        file: levels/upper-composition-witness.rzk.md
+        prereqs:
+        - lower-composition-witness
+    - puzzle:
+        file: levels/upper-composition-coherence.rzk.md
+        prereqs:
+        - upper-composition-witness
+        - uniqueness-of-composites
+    - puzzle:
+        file: levels/simplifying-the-upper-coherence.rzk.md
+        prereqs:
+        - upper-composition-coherence
+        - right-unit-law
+    - puzzle:
+        file: levels/naturality-of-representable-transformation.rzk.md
+        prereqs:
+        - lower-composition-coherence
+        - simplifying-the-upper-coherence
+    - prose:
+        file: levels/naturality-summary.md
