@@ -6,9 +6,15 @@ hints:
   when-goal: '= (diagonal'
 id: lower-composition-coherence
 inventory:
-- 'uniqueness-comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) (alpha : hom2 A x y z f g h) → comp-is-segal A is-segal-A x y z f g = h | any witnessed composite equals the chosen one'
-- 'diagonal : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b | the diagonal of the transformed square'
-- 'comp-witness : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom2 A x y b f (ϕ y v) (diagonal …) | the lower triangle of the transformed square'
+- name: uniqueness-comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) (alpha : hom2 A x y z f g h) → comp-is-segal A is-segal-A x y z f g = h'
+  synopsis: 'any witnessed composite equals the chosen one'
+- name: diagonal
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b'
+  synopsis: 'the diagonal of the transformed square'
+- name: comp-witness
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom2 A x y b f (ϕ y v) (diagonal …)'
+  synopsis: 'the lower triangle of the transformed square'
 statement: 'comp-is-segal A is-segal-A x y b f (ϕ y v) = diagonal A is-segal-A a b x y f v ϕ'
 title: The lower coherence
 ---

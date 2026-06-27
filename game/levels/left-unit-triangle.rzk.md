@@ -1,7 +1,9 @@
 ---
 id: left-unit-triangle
 inventory:
-- 'id-hom : (A : U) → (x : A) → hom A x x | the identity arrow'
+- name: id-hom
+  type: '(A : U) → (x : A) → hom A x x'
+  synopsis: 'the identity arrow'
 statement: hom2 A x x y (id-hom A x) f f
 title: The left-unit triangle
 ---

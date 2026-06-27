@@ -4,7 +4,9 @@ hints:
 - text: 'The motive sends an endpoint `b` and a path `x = b` to the goal `f x = f b`. At `refl` that is `f x = f x`, so the base case is `refl`. Build it with `ind-path A x (\ b q → f x = f b) refl y p`.'
 id: functions-act-on-paths
 inventory:
-- 'ind-path : (A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p | path induction'
+- name: ind-path
+  type: '(A : U) (a : A) (C : (b : A) → a = b → U) (d : C a refl) (x : A) (p : a = x) → C x p'
+  synopsis: 'path induction'
 statement: f x = f y
 title: Functions act on paths
 ---

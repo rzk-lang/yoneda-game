@@ -4,7 +4,9 @@ hints:
 - text: 'The lower triangle reads the square directly, in the same coordinate order: `\ (t , s) → square-transformation A is-segal-A a b x y f v ϕ t s`.'
 id: lower-composition-witness
 inventory:
-- 'square-transformation : (A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → (t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v) , t ≡ 1₂ ↦ ϕ y v ] | the square pushed through ϕ'
+- name: square-transformation
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → (t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v) , t ≡ 1₂ ↦ ϕ y v ]'
+  synopsis: 'the square pushed through ϕ'
 statement: 'hom2 A x y b f (ϕ y v) (diagonal A is-segal-A a b x y f v ϕ)'
 title: The lower triangle
 ---

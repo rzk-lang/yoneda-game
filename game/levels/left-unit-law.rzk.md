@@ -5,9 +5,15 @@ hints:
   when-goal: '= f'
 id: left-unit-law
 inventory:
-- 'uniqueness-comp-is-segal : (A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) (alpha : hom2 A x y z f g h) → comp-is-segal A is-segal-A x y z f g = h | any witnessed composite equals the chosen one'
-- 'id-comp-witness          : (A : U) (x y : A) (f : hom A x y) → hom2 A x x y (id-hom A x) f f | the left-unit triangle'
-- 'id-hom                   : (A : U) (x : A) → hom A x x | the identity arrow'
+- name: uniqueness-comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) (alpha : hom2 A x y z f g h) → comp-is-segal A is-segal-A x y z f g = h'
+  synopsis: 'any witnessed composite equals the chosen one'
+- name: id-comp-witness
+  type: '(A : U) (x y : A) (f : hom A x y) → hom2 A x x y (id-hom A x) f f'
+  synopsis: 'the left-unit triangle'
+- name: id-hom
+  type: '(A : U) (x : A) → hom A x x'
+  synopsis: 'the identity arrow'
 statement: comp-is-segal A is-segal-A x x y (id-hom A x) f = f
 title: The left unit law
 ---
