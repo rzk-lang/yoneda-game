@@ -119,7 +119,7 @@ chapters:
         - a-homotopy-from-a-path
     - prose:
         file: levels/equivalences-summary.md
-- title: Synthetic ∞-categories
+- title: Synthetic pre-∞-categories
   sections:
   - id: morphisms
     title: Morphisms and triangles
