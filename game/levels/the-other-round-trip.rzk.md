@@ -2,37 +2,37 @@
 forbidden:
 - idJ
 hints:
-- text: 'Both sides equal the diagonal: `comp-coherence` gives the left side, `simplified-id-coherence` gives the right. `zig-zag-concat` joins two paths into a shared target.'
-- text: 'The shape is `zig-zag-concat (hom A x b) (comp-is-segal A is-segal-A x y b f (ϕ y v)) (diagonal A is-segal-A a b x y f v ϕ) (ϕ x (comp-is-segal A is-segal-A x y a f v)) ? ?`.'
-- text: 'The two paths are the coherences: `comp-coherence A is-segal-A a b x y f v ϕ` and `simplified-id-coherence A is-segal-A a b x y f v ϕ`.'
-  when-goal: '= (ϕ x'
-id: naturality-of-representable-transformation
+- text: 'This is `eq-htpy` again, now over the object `x`. Its domain is `A` and its codomain family is `\ x → (hom A x a → hom A x b)`.'
+- text: 'The two transformations are the rebuilt one and `ϕ`: `contra-yon A is-segal-A a b (contra-evid A a b ϕ)` and `ϕ`.'
+- text: 'The homotopy is the previous level, applied at each object: `\ x → contra-yon-evid-once-pointwise A is-segal-A a b ϕ x`.'
+  when-goal: '= ϕ'
+id: the-other-round-trip
 inventory:
-- name: zig-zag-concat
-  type: '(A : U) (x y z : A) (p : x = y) (q : z = y) → x = z'
-  synopsis: 'join two paths that share a target'
-- name: comp-coherence
-  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x y b f (ϕ y v) = diagonal …'
-  synopsis: 'the lower coherence'
-- name: simplified-id-coherence
-  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → ϕ x (comp-is-segal A is-segal-A x y a f v) = diagonal …'
-  synopsis: 'the simplified upper coherence'
-- name: diagonal
-  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b'
-  synopsis: 'the diagonal of the transformed square'
-- name: comp-is-segal
-  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z'
-  synopsis: 'the chosen composite'
+- name: eq-htpy
+  type: '(X : U) (A : X → U) (f g : (x : X) → A x) → ((x : X) → f x = g x) → f = g'
+  synopsis: 'a homotopy gives a path of functions (uses funext)'
+- name: contra-yon-evid-once-pointwise
+  type: '(A : U) (is-segal-A : is-segal A) (a b : A) (ϕ : (z : A) → hom A z a → hom A z b) (x : A) → (contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x = ϕ x'
+  synopsis: 'the round-trip at a point (uses funext)'
+- name: contra-yon
+  type: '(A : U) (is-segal-A : is-segal A) (a b : A) → hom A a b → ((z : A) → hom A z a → hom A z b)'
+  synopsis: 'the inverse, by composition'
+- name: contra-evid
+  type: '(A : U) (a b : A) → ((z : A) → hom A z a → hom A z b) → hom A a b'
+  synopsis: 'evaluation at the identity'
 - name: hom
   type: '(A : U) (x y : A) → U'
   synopsis: 'the type of arrows, passed as an explicit type argument'
-statement: 'comp-is-segal A is-segal-A x y b f (ϕ y v) = ϕ x (comp-is-segal A is-segal-A x y a f v)'
-title: Naturality is automatic
+- name: funext
+  type: 'FunExt'
+  synopsis: 'the function extensionality axiom'
+statement: 'contra-yon A is-segal-A a b (contra-evid A a b ϕ) = ϕ'
+title: The other round-trip
 ---
 
-Everything is in place. `comp-coherence` says the composite of `f` and `ϕ y v` equals the diagonal. `simplified-id-coherence` says the value of `ϕ` on the composite of `f` and `v` equals the same diagonal. Two arrows equal to a common third are equal to each other. Join the two equalities through the diagonal with `zig-zag-concat`, and naturality falls out: `ϕ` carries the composite to the composite, with no naturality hypothesis assumed. Build it.
+Now let the object vary too. The rebuilt transformation and `ϕ` agree at every object `x`, as functions, by the previous level. Function extensionality once more glues that family into a single path of transformations. This time the domain is `A` itself and the codomain family sends each object `x` to the function type `hom A x a → hom A x b`. Feed `eq-htpy` those, the two transformations, and the pointwise equality. Build it.
 
-(The `#def` name `naturality` abbreviates the geodesic's `Naturality-contravariant-fiberwise-representable-transformation`.)
+(The `#def` name `contra-yon-evid` is the geodesic's `Contra-yon-evid`: the full retraction homotopy.)
 
 ```rzk prelude
 #lang rzk-1
@@ -187,33 +187,80 @@ Everything is in place. `comp-coherence` says the composite of `f` and `ϕ y v` 
        (diagonal A is-segal-A a b x y f v ϕ)
        (comp-id-is-segal A is-segal-A x b (ϕ x (comp-is-segal A is-segal-A x y a f v)))
        (id-coherence A is-segal-A a b x y f v ϕ)
-```
-
-```rzk template
 #def naturality
-  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (comp-is-segal A is-segal-A x y b f (ϕ y v))
-    = (ϕ x (comp-is-segal A is-segal-A x y a f v))
-  := ?
-```
-
-```rzk solution
-#def naturality
-  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (comp-is-segal A is-segal-A x y b f (ϕ y v))
-    = (ϕ x (comp-is-segal A is-segal-A x y a f v))
+  : (comp-is-segal A is-segal-A x y b f (ϕ y v)) = (ϕ x (comp-is-segal A is-segal-A x y a f v))
   := zig-zag-concat (hom A x b)
        (comp-is-segal A is-segal-A x y b f (ϕ y v))
        (diagonal A is-segal-A a b x y f v ϕ)
        (ϕ x (comp-is-segal A is-segal-A x y a f v))
        (comp-coherence A is-segal-A a b x y f v ϕ)
        (simplified-id-coherence A is-segal-A a b x y f v ϕ)
+#def htpy-eq (X : U) (A : X → U) (f g : (x : X) → A x) (p : f = g)
+  : (x : X) → f x = g x
+  := ind-path ((x : X) → A x) f (\ g0 p0 → (x : X) → f x = g0 x) (\ x → refl) g p
+#def homotopy (A B : U) (f g : A → B) : U := (a : A) → f a = g a
+#def identity (A : U) : A → A := \ a → a
+#def comp (A B C : U) (g : B → C) (f : A → B) : A → C := \ a → g (f a)
+#def product (A B : U) : U := Σ (_ : A) , B
+#def has-retraction (A B : U) (f : A → B) : U := Σ (r : B → A) , homotopy A A (comp A B A r f) (identity A)
+#def has-section (A B : U) (f : A → B) : U := Σ (s : B → A) , homotopy B B (comp B A B f s) (identity B)
+#def is-equiv (A B : U) (f : A → B) : U := product (has-retraction A B f) (has-section A B f)
+#def FunExt : U := (X : U) → (A : X → U) → (f : (x : X) → A x) → (g : (x : X) → A x) → is-equiv (f = g) ((x : X) → f x = g x) (htpy-eq X A f g)
+#assume funext : FunExt
+#def eq-htpy uses (funext) (X : U) (A : X → U) (f : (x : X) → A x) (g : (x : X) → A x)
+  : ((x : X) → f x = g x) → (f = g)
+  := first (first (funext X A f g))
+#def contra-evid (A : U) (a b : A)
+  : ((z : A) → hom A z a → hom A z b) → hom A a b
+  := \ ϕ → ϕ a (id-hom A a)
+#def contra-yon (A : U) (is-segal-A : is-segal A) (a b : A)
+  : hom A a b → ((z : A) → hom A z a → hom A z b)
+  := \ v z f → comp-is-segal A is-segal-A z a b f v
+#def contra-yon-evid-twice-pointwise
+  (A : U) (is-segal-A : is-segal A) (a b : A)
+  (ϕ : (z : A) → hom A z a → hom A z b) (x : A) (f : hom A x a)
+  : (contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f = ϕ x f
+  := concat (hom A x b)
+       ((contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f)
+       (ϕ x (comp-is-segal A is-segal-A x a a f (id-hom A a)))
+       (ϕ x f)
+       (naturality A is-segal-A a b x a f (id-hom A a) ϕ)
+       (ap (hom A x a) (hom A x b)
+         (comp-is-segal A is-segal-A x a a f (id-hom A a))
+         f (ϕ x)
+         (comp-id-is-segal A is-segal-A x a f))
+#def contra-yon-evid-once-pointwise uses (funext)
+  (A : U) (is-segal-A : is-segal A) (a b : A)
+  (ϕ : (z : A) → hom A z a → hom A z b) (x : A)
+  : (contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x = ϕ x
+  := eq-htpy (hom A x a) (\ f → hom A x b)
+       (\ f → (contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f)
+       (\ f → ϕ x f)
+       (\ f → contra-yon-evid-twice-pointwise A is-segal-A a b ϕ x f)
+```
+
+```rzk template
+#def contra-yon-evid uses (funext)
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : contra-yon A is-segal-A a b (contra-evid A a b ϕ) = ϕ
+  := ?
+```
+
+```rzk solution
+#def contra-yon-evid uses (funext)
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : contra-yon A is-segal-A a b (contra-evid A a b ϕ) = ϕ
+  := eq-htpy ( A) (\ x → (hom A x a → hom A x b))
+       (contra-yon A is-segal-A a b (contra-evid A a b ϕ))
+       ( ϕ)
+       (\ x → contra-yon-evid-once-pointwise A is-segal-A a b ϕ x)
 ```
 
 ## Conclusion
 
-Every fiberwise transformation between representable functors is automatically natural. The proof was geometric: a square built from a composition witness and a unit triangle, transported by `ϕ`, then read back as two composition relations and glued by uniqueness, the unit law, and path concatenation. This is the technical heart of the contravariant Yoneda lemma.
+The hard round-trip is complete: rebuilding a transformation from its identity-value returns the same transformation. With both round-trips in hand, the two Yoneda maps are mutually inverse, and the equivalence assembles in the final level.

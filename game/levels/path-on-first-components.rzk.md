@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'A path `e : s = t` between pairs, pushed through the projection `first`, gives a path between first components. That pushing-through is `ap`.'
 - text: 'Apply `ap` with the function `\ z → first z`: `ap (Σ (a : A) , B a) A s t (\ z → first z) e`.'

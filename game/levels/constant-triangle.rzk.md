@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 id: constant-triangle
 inventory:
 - name: id-hom

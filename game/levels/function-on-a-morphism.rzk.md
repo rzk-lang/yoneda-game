@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 id: function-on-a-morphism
 statement: hom B (g x) (g y)
 title: A function on a morphism

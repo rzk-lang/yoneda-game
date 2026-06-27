@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'Contractibility says more than "a composite exists": every point of the filler space equals the center. The center is the chosen composite paired with its witness, and your own `(h , alpha)` is another point of the same space. So there is a path between the two points, and its first component is the equality of arrows you want.'
 - text: 'The tool is `first-path-Σ`, which turns a path of pairs into a path of their first components. It takes five arguments, `first-path-Σ ? ? ? ? ?`: the index type, the family, the two endpoints, and a path between them.'

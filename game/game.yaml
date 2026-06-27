@@ -119,7 +119,7 @@ chapters:
         - a-homotopy-from-a-path
     - prose:
         file: levels/equivalences-summary.md
-- title: Synthetic ∞-categories
+- title: Synthetic pre-∞-categories
   sections:
   - id: morphisms
     title: Morphisms and triangles
@@ -191,7 +191,7 @@ chapters:
         - uniqueness-of-composites
     - prose:
         file: levels/unit-laws-summary.md
-- title: Naturality
+- title: The Yoneda lemma
   sections:
   - id: naturality
     title: Naturality of representable transformations
@@ -242,3 +242,44 @@ chapters:
         - simplifying-the-upper-coherence
     - prose:
         file: levels/naturality-summary.md
+  - id: yoneda
+    title: Proving the Yoneda lemma
+    items:
+    - prose:
+        file: levels/yoneda-intro.md
+    - puzzle:
+        file: levels/evaluation-at-the-identity.rzk.md
+        prereqs:
+        - identity-morphism
+    - puzzle:
+        file: levels/the-inverse-by-composition.rzk.md
+        prereqs:
+        - composite-arrow
+    - puzzle:
+        file: levels/the-easy-round-trip.rzk.md
+        prereqs:
+        - evaluation-at-the-identity
+        - the-inverse-by-composition
+        - right-unit-law
+    - puzzle:
+        file: levels/the-pointwise-round-trip.rzk.md
+        prereqs:
+        - naturality-of-representable-transformation
+        - the-easy-round-trip
+    - puzzle:
+        file: levels/gluing-the-fibers.rzk.md
+        prereqs:
+        - the-pointwise-round-trip
+        - homotopies-give-paths
+    - puzzle:
+        file: levels/the-other-round-trip.rzk.md
+        prereqs:
+        - gluing-the-fibers
+    - puzzle:
+        file: levels/the-yoneda-lemma.rzk.md
+        prereqs:
+        - the-other-round-trip
+        - the-easy-round-trip
+        - the-identity-equivalence
+    - prose:
+        file: levels/yoneda-summary.md

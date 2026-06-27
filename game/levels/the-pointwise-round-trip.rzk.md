@@ -2,24 +2,30 @@
 forbidden:
 - idJ
 hints:
-- text: 'The shared arrow is `ϕ x` of the composite of `f` and `v`, post-composed with the identity at `b`. The right unit law sends it to `ϕ x` of the composite; `id-coherence` sends it to the diagonal. `zag-zig-concat` joins two paths out of that shared source.'
-- text: 'The shared source is `comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b)`, with endpoints `ϕ x (comp-is-segal A is-segal-A x y a f v)` and the diagonal. You pass `hom A x b` as the explicit type argument.'
-- text: 'The two paths are the right unit law and the upper coherence: `comp-id-is-segal A is-segal-A x b (ϕ x (comp-is-segal A is-segal-A x y a f v))` and `id-coherence A is-segal-A a b x y f v ϕ`.'
-  when-goal: '= (diagonal'
-id: simplifying-the-upper-coherence
+- text: 'This is a `concat` of two paths in `hom A x b`, through the midpoint `ϕ x (comp-is-segal A is-segal-A x a a f (id-hom A a))`. The first path is naturality; the second transports the right unit law through `ϕ x`.'
+- text: 'The first path is naturality applied to `f` and the identity: `naturality A is-segal-A a b x a f (id-hom A a) ϕ`.'
+- text: 'The second path applies `ϕ x` to the right unit law with `ap`: `ap (hom A x a) (hom A x b) (comp-is-segal A is-segal-A x a a f (id-hom A a)) f (ϕ x) (comp-id-is-segal A is-segal-A x a f)`.'
+  when-goal: '= ϕ x f'
+id: the-pointwise-round-trip
 inventory:
-- name: zag-zig-concat
-  type: '(A : U) (x y z : A) (p : y = x) (q : y = z) → x = z'
-  synopsis: 'join two paths that share a source'
+- name: naturality
+  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x y b f (ϕ y v) = ϕ x (comp-is-segal A is-segal-A x y a f v)'
+  synopsis: 'naturality of a representable transformation'
 - name: comp-id-is-segal
   type: '(A : U) (is-segal-A : is-segal A) (x y : A) (f : hom A x y) → comp-is-segal A is-segal-A x y y f (id-hom A y) = f'
   synopsis: 'the right unit law'
-- name: id-coherence
-  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b) = diagonal …'
-  synopsis: 'the upper coherence'
-- name: diagonal
-  type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) (ϕ : (z : A) → hom A z a → hom A z b) → hom A x b'
-  synopsis: 'the diagonal of the transformed square'
+- name: ap
+  type: '(A B : U) (x y : A) (f : A → B) (p : x = y) → f x = f y'
+  synopsis: 'a function acts on a path'
+- name: concat
+  type: '(A : U) (x y z : A) (p : x = y) (q : y = z) → x = z'
+  synopsis: 'concatenate two paths'
+- name: contra-yon
+  type: '(A : U) (is-segal-A : is-segal A) (a b : A) → hom A a b → ((z : A) → hom A z a → hom A z b)'
+  synopsis: 'the inverse, by composition'
+- name: contra-evid
+  type: '(A : U) (a b : A) → ((z : A) → hom A z a → hom A z b) → hom A a b'
+  synopsis: 'evaluation at the identity'
 - name: comp-is-segal
   type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z'
   synopsis: 'the chosen composite'
@@ -29,13 +35,13 @@ inventory:
 - name: hom
   type: '(A : U) (x y : A) → U'
   synopsis: 'the type of arrows, passed as an explicit type argument'
-statement: 'ϕ x (comp-is-segal A is-segal-A x y a f v) = diagonal A is-segal-A a b x y f v ϕ'
-title: Simplifying the upper coherence
+statement: '(contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f = ϕ x f'
+title: The pointwise round-trip
 ---
 
-The upper coherence `id-coherence` you just built carries a needless identity: it equates the diagonal with `ϕ x` of the composite of `f` and `v`, post-composed with the identity at `b`, rather than with `ϕ x` of that composite directly. The right unit law you proved earlier strips the identity, since composing with it returns the original arrow. Both facts speak about that same post-composed arrow: the right unit law equates it to `ϕ x` of the composite, and `id-coherence` equates it to the diagonal. Join the two, out of their shared arrow, with `zag-zig-concat`. The identity drops out, leaving `ϕ x` of the composite equal to the diagonal. Build it.
+The other round-trip rebuilds a transformation from its identity-value and compares it to the original. They are not definitionally equal, so the comparison is a path, and we build it one layer at a time. Fix an object `x` and an arrow `f : x → a`. Unfolded, the rebuilt value is the composite of `f` with `ϕ a (id-hom A a)`. Naturality, which you proved in the previous section, rewrites that composite as `ϕ x` of the composite of `f` with the identity. The right unit law collapses that inner composite back to `f`, and `ap` transports the equality through `ϕ x`. Concatenate the two steps. Build it.
 
-(The `#def` name `simplified-id-coherence` abbreviates the geodesic's `simplified-coherence-witness-id-transformation-id-codomain-square`.)
+(The `#def` name `contra-yon-evid-twice-pointwise` is the geodesic's `Contra-yon-evid-twice-pointwise`: pointwise in both the object and the arrow.)
 
 ```rzk prelude
 #lang rzk-1
@@ -89,6 +95,10 @@ The upper coherence `id-coherence` you just built carries a needless identity: i
   ( A : U) ( x y z : A) ( p : x = y) ( q : y = z)
   : x = z
   := ind-path A y (\ z' q' → x = z') p z q
+#def zig-zag-concat
+  ( A : U) ( x y z : A) ( p : x = y) ( q : z = y)
+  : x = z
+  := concat A x y z p (rev A z y q)
 #def zag-zig-concat
   ( A : U) ( x y z : A) ( p : y = x) ( q : y = z)
   : x = z
@@ -143,6 +153,20 @@ The upper coherence `id-coherence` you just built carries a needless identity: i
   ( ϕ : (z : A) → hom A z a → hom A z b)
   : hom A x b
   := \ t → square-transformation A is-segal-A a b x y f v ϕ t t
+#def comp-witness
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : hom2 A x y b f (ϕ y v) (diagonal A is-segal-A a b x y f v ϕ)
+  := \ (t , s) → square-transformation A is-segal-A a b x y f v ϕ t s
+#def comp-coherence
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : (comp-is-segal A is-segal-A x y b f (ϕ y v)) = (diagonal A is-segal-A a b x y f v ϕ)
+  := uniqueness-comp-is-segal A is-segal-A x y b f (ϕ y v)
+       (diagonal A is-segal-A a b x y f v ϕ)
+       (comp-witness A is-segal-A a b x y f v ϕ)
 #def id-witness
   ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
   ( f : hom A x y) ( v : hom A y a)
@@ -161,33 +185,60 @@ The upper coherence `id-coherence` you just built carries a needless identity: i
        (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b)
        (diagonal A is-segal-A a b x y f v ϕ)
        (id-witness A is-segal-A a b x y f v ϕ)
-```
-
-```rzk template
 #def simplified-id-coherence
-  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (ϕ x (comp-is-segal A is-segal-A x y a f v))
-    = (diagonal A is-segal-A a b x y f v ϕ)
-  := ?
-```
-
-```rzk solution
-#def simplified-id-coherence
-  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (ϕ x (comp-is-segal A is-segal-A x y a f v))
-    = (diagonal A is-segal-A a b x y f v ϕ)
+  : (ϕ x (comp-is-segal A is-segal-A x y a f v)) = (diagonal A is-segal-A a b x y f v ϕ)
   := zag-zig-concat (hom A x b)
        (ϕ x (comp-is-segal A is-segal-A x y a f v))
        (comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
        (diagonal A is-segal-A a b x y f v ϕ)
        (comp-id-is-segal A is-segal-A x b (ϕ x (comp-is-segal A is-segal-A x y a f v)))
        (id-coherence A is-segal-A a b x y f v ϕ)
+#def naturality
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : (comp-is-segal A is-segal-A x y b f (ϕ y v)) = (ϕ x (comp-is-segal A is-segal-A x y a f v))
+  := zig-zag-concat (hom A x b)
+       (comp-is-segal A is-segal-A x y b f (ϕ y v))
+       (diagonal A is-segal-A a b x y f v ϕ)
+       (ϕ x (comp-is-segal A is-segal-A x y a f v))
+       (comp-coherence A is-segal-A a b x y f v ϕ)
+       (simplified-id-coherence A is-segal-A a b x y f v ϕ)
+#def contra-evid (A : U) (a b : A)
+  : ((z : A) → hom A z a → hom A z b) → hom A a b
+  := \ ϕ → ϕ a (id-hom A a)
+#def contra-yon (A : U) (is-segal-A : is-segal A) (a b : A)
+  : hom A a b → ((z : A) → hom A z a → hom A z b)
+  := \ v z f → comp-is-segal A is-segal-A z a b f v
+```
+
+```rzk template
+#def contra-yon-evid-twice-pointwise
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A)
+  ( ϕ : (z : A) → hom A z a → hom A z b) ( x : A) ( f : hom A x a)
+  : (contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f = ϕ x f
+  := ?
+```
+
+```rzk solution
+#def contra-yon-evid-twice-pointwise
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A)
+  ( ϕ : (z : A) → hom A z a → hom A z b) ( x : A) ( f : hom A x a)
+  : (contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f = ϕ x f
+  := concat (hom A x b)
+       ((contra-yon A is-segal-A a b (contra-evid A a b ϕ)) x f)
+       (ϕ x (comp-is-segal A is-segal-A x a a f (id-hom A a)))
+       (ϕ x f)
+       (naturality A is-segal-A a b x a f (id-hom A a) ϕ)
+       (ap (hom A x a) (hom A x b)
+         (comp-is-segal A is-segal-A x a a f (id-hom A a))
+         f (ϕ x)
+         (comp-id-is-segal A is-segal-A x a f))
 ```
 
 ## Conclusion
 
-Both halves now read as equalities through the diagonal: the left composite equals it, and so does the value of `ϕ` on the composite. One concatenation away from naturality.
+At a fixed object and arrow the rebuilt transformation agrees with the original. This is the heart of the hard round-trip. The remaining work is bookkeeping: glue these pointwise paths into a single path of transformations, which is exactly what function extensionality does.

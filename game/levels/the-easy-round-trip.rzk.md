@@ -2,25 +2,20 @@
 forbidden:
 - idJ
 hints:
-- text: 'This is the mirror of the right unit law. The composite `id ∘ f` is a witnessed composite, and the left-unit triangle `id-comp-witness` witnesses that its hypotenuse is `f`. Uniqueness does the rest.'
-- text: 'Apply `uniqueness-comp-is-segal` to the unit triangle: `uniqueness-comp-is-segal A is-segal-A x x y (id-hom A x) f f (id-comp-witness A x y f)`.'
-  when-goal: '= f'
-id: left-unit-law
+- text: 'Unfold the two maps: evaluating the rebuilt transformation at the identity gives the composite of the identity at `a` with `v`. That is exactly what the left unit law `id-comp-is-segal` simplifies.'
+- text: 'Apply the left unit law to `v`: `id-comp-is-segal A is-segal-A a b v`.'
+id: the-easy-round-trip
 inventory:
-- name: uniqueness-comp-is-segal
-  type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) (h : hom A x z) (alpha : hom2 A x y z f g h) → comp-is-segal A is-segal-A x y z f g = h'
-  synopsis: 'any witnessed composite equals the chosen one'
-- name: id-comp-witness
-  type: '(A : U) (x y : A) (f : hom A x y) → hom2 A x x y (id-hom A x) f f'
-  synopsis: 'the left-unit triangle'
-- name: id-hom
-  type: '(A : U) (x : A) → hom A x x'
-  synopsis: 'the identity arrow'
-statement: comp-is-segal A is-segal-A x x y (id-hom A x) f = f
-title: The left unit law
+- name: id-comp-is-segal
+  type: '(A : U) (is-segal-A : is-segal A) (x y : A) (f : hom A x y) → comp-is-segal A is-segal-A x x y (id-hom A x) f = f'
+  synopsis: 'the left unit law'
+statement: 'contra-evid A a b (contra-yon A is-segal-A a b v) = v'
+title: The easy round-trip
 ---
 
-Now the mirror image: composing the identity at `x` with `f : x → y` on the left also returns `f`. The witness is the left-unit triangle, given in the prelude as `id-comp-witness`, whose left edge is the identity and whose hypotenuse is `f`. So `f` is a witnessed composite of the identity and `f`, and uniqueness identifies it with the chosen composite. The `#def` name `id-comp-is-segal` is the faithful sHoTT name. Build it.
+One of the two round-trips is immediate. Start with an arrow `v`, rebuild the transformation with `contra-yon`, then evaluate at the identity with `contra-evid`. Unfolding the two maps, the result is the composite of the identity at `a` with `v`. The left unit law says that composite is `v` again. Apply it. The left unit law is the mirror of the right unit law you proved earlier, and it is provided here ready to use. Build it.
+
+(The `#def` name `contra-evid-yon` is the geodesic's `Contra-evid-yon`.)
 
 ```rzk prelude
 #lang rzk-1
@@ -88,22 +83,31 @@ Now the mirror image: composing the identity at `x` with `f : x → y` on the le
 #def id-comp-witness (A : U) (x y : A) (f : hom A x y)
   : hom2 A x x y (id-hom A x) f f
   := \ (t , s) → f s
+#def id-comp-is-segal (A : U) (is-segal-A : is-segal A) (x y : A) (f : hom A x y)
+  : (comp-is-segal A is-segal-A x x y (id-hom A x) f) = f
+  := uniqueness-comp-is-segal A is-segal-A x x y (id-hom A x) f f (id-comp-witness A x y f)
+#def contra-evid (A : U) (a b : A)
+  : ((z : A) → hom A z a → hom A z b) → hom A a b
+  := \ ϕ → ϕ a (id-hom A a)
+#def contra-yon (A : U) (is-segal-A : is-segal A) (a b : A)
+  : hom A a b → ((z : A) → hom A z a → hom A z b)
+  := \ v z f → comp-is-segal A is-segal-A z a b f v
 ```
 
 ```rzk template
-#def id-comp-is-segal
-  ( A : U) ( is-segal-A : is-segal A) ( x : A) ( y : A) ( f : hom A x y)
-  : (comp-is-segal A is-segal-A x x y (id-hom A x) f) = f
+#def contra-evid-yon
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( v : hom A a b)
+  : contra-evid A a b (contra-yon A is-segal-A a b v) = v
   := ?
 ```
 
 ```rzk solution
-#def id-comp-is-segal
-  ( A : U) ( is-segal-A : is-segal A) ( x : A) ( y : A) ( f : hom A x y)
-  : (comp-is-segal A is-segal-A x x y (id-hom A x) f) = f
-  := uniqueness-comp-is-segal A is-segal-A x x y (id-hom A x) f f (id-comp-witness A x y f)
+#def contra-evid-yon
+  ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( v : hom A a b)
+  : contra-evid A a b (contra-yon A is-segal-A a b v) = v
+  := id-comp-is-segal A is-segal-A a b v
 ```
 
 ## Conclusion
 
-Both unit laws come from the same source: a hand-built unit triangle, fed to uniqueness of composites. The left unit law is the one that later closes the easy round-trip of the Yoneda equivalence, where evaluating a representable transformation at the identity and composing back returns the original.
+This is the section homotopy of the equivalence, and it falls straight out of the left unit law. The other round-trip is harder: rebuilding from the identity-value and then comparing to the original transformation takes naturality and function extensionality.

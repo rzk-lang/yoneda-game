@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'The diagonal walks the transformed square with both coordinates equal: `\ t → ?`, the square evaluated at `(t , t)`.'
 - text: 'Set both arguments to the same `t`: `\ t → square-transformation A is-segal-A a b x y f v ϕ t t`.'

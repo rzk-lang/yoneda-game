@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'The right edge is the identity at $y$, so the whole triangle is just $f$, reparametrized. You only need one coordinate.'
 - text: 'Look at the bottom edge of the goal: `↦ f t`. That tells you to apply $f$ to the first coordinate. Type `\ (t , s) → f t`.'

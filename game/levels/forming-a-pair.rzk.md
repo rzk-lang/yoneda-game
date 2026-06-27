@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'A dependent pair is written `(a , b)`: the base point, then the fiber point.'
 id: forming-a-pair

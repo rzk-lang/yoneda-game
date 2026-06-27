@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'You already have uniqueness of composites. The composite `f ∘ id` is *some* witnessed composite, and the right-unit triangle `comp-id-witness` witnesses that its hypotenuse is `f`. Uniqueness turns that witness into the equality.'
 - text: 'Apply `uniqueness-comp-is-segal` to the unit triangle: `uniqueness-comp-is-segal A is-segal-A x y y f (id-hom A y) f (comp-id-witness A x y f)`.'

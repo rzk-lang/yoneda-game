@@ -1,4 +1,6 @@
 ---
+forbidden:
+- idJ
 hints:
 - text: 'Work column by column: `\ t → ?`, where for a fixed `t` you must produce an arrow `hom A (f t) b`.'
 - text: 'The column of the square at `t` is `\ s → codomain-square A is-segal-A a b x y f v t s`, an arrow into `a`. Feed it to `ϕ (f t)`.'
