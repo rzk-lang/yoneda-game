@@ -1,7 +1,7 @@
 ---
 hints:
 - text: 'You have `p : x = y` and `q : z = y`, both ending at `y`. Reverse `q`, then concatenate.'
-- text: '`rev A z y q : y = z`, so `concat A x y z p (rev A z y q) : x = z`.'
+- text: 'Reversing `q` gives `rev A z y q : y = z`. Concatenate `p` with that using `concat` (endpoints `x`, `y`, `z`). Assemble the call yourself.'
 id: zig-zag-concatenation
 inventory:
 - name: rev

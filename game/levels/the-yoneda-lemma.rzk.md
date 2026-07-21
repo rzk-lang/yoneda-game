@@ -17,7 +17,7 @@ inventory:
   type: '(A : U) (is-segal-A : is-segal A) (a b : A) (v : hom A a b) → contra-evid A a b (contra-yon A is-segal-A a b v) = v'
   synopsis: 'the easy round-trip'
 - name: funext
-  type: 'FunExt'
+  type: '(X : U) (A : X → U) (f g : (x : X) → A x) → is-equiv (f = g) ((x : X) → f x = g x) (htpy-eq X A f g)'
   synopsis: 'the function extensionality axiom'
 statement: 'is-equiv ((z : A) → hom A z a → hom A z b) (hom A a b) (contra-evid A a b)'
 title: The Yoneda lemma

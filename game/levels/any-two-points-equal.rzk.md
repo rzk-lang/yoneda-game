@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: 'Both `x` and `y` are reached by a contraction path from the center, so the two paths share their domain. That is exactly what `zag-zig-concat` joins.'
-- text: '`homotopy-contraction A is-contr-A x : center = x` and `homotopy-contraction A is-contr-A y : center = y` share the center. Join them: `zag-zig-concat A x (center-contraction A is-contr-A) y (homotopy-contraction A is-contr-A x) (homotopy-contraction A is-contr-A y)`.'
+- text: 'The two paths `homotopy-contraction A is-contr-A x : center = x` and `homotopy-contraction A is-contr-A y : center = y` share the center `center-contraction A is-contr-A`. Feed those two paths to `zag-zig-concat`, with `x` and `y` as the endpoints, and assemble the call yourself.'
 id: any-two-points-equal
 inventory:
 - name: center-contraction

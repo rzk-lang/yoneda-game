@@ -1,7 +1,7 @@
 ---
 hints:
 - text: 'Induct on the second path `q` with `ind-path`, keeping `p` fixed. When `q` is `refl`, the endpoint is `y` and you already hold `p`.'
-- text: 'The motive sends an endpoint `c` and a path `y = c` to `x = c`. The base case is `p` itself, not `refl`. Build it with `ind-path A y (\ c r → x = c) p z q`.'
+- text: 'The motive sends an endpoint `c` and a path `y = c` to `x = c`. The base case is `p` itself, not `refl`. Assemble `ind-path` with that motive and base case, then pass `z` and `q`.'
 id: path-concatenation
 inventory:
 - name: ind-path

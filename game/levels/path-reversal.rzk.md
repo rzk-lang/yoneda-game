@@ -1,7 +1,7 @@
 ---
 hints:
 - text: 'Induct on `p` with `ind-path`. As the endpoint varies, you want a path back to `x`.'
-- text: 'The motive sends an endpoint `b` and a path `x = b` to `b = x`. At `refl` that is `x = x`, so the base case is `refl`. Build it with `ind-path A x (\ b q → b = x) refl y p`.'
+- text: 'The motive sends an endpoint `b` and a path `x = b` to `b = x`. At `refl` that is `x = x`, so the base case is `refl`. Assemble `ind-path` with that motive and base case, then pass `y` and `p`.'
 id: path-reversal
 inventory:
 - name: ind-path

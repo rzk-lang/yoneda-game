@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: 'A path `e : s = t` between pairs, pushed through the projection `first`, gives a path between first components. That pushing-through is `ap`.'
-- text: 'Apply `ap` with the function `\ z → first z`: `ap (Σ (a : A) , B a) A s t (\ z → first z) e`.'
+- text: 'Apply `ap` with the projection `\ z → first z`: its domain is `Σ (a : A) , B a`, its codomain `A`, and the path is `e`. Assemble the call yourself.'
 id: path-on-first-components
 inventory:
 - name: ap

@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: 'The diagonal walks the transformed square with both coordinates equal: `\ t → ?`, the square evaluated at `(t , t)`.'
-- text: 'Set both arguments to the same `t`: `\ t → square-transformation A is-segal-A a b x y f v ϕ t t`.'
+- text: 'Fill the hole with `square-transformation` applied to this level''s arguments and evaluated at both coordinates equal to `t` (the `… t t` at the end). Write out the application yourself.'
 id: diagonal-of-the-square
 inventory:
 - name: square-transformation
