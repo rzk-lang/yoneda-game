@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: 'A `hom2` is a map out of `Δ²`, of the form `\ (t , s) → ?`. You already have the transformed square; restrict it to the triangle.'
-- text: 'The lower triangle reads the square directly, in the same coordinate order: `\ (t , s) → square-transformation A is-segal-A a b x y f v ϕ t s`.'
+- text: 'Fill the `\ (t , s) → …` with `square-transformation` applied to this level''s arguments, read in the same coordinate order `t s`. Write the application yourself.'
 id: lower-composition-witness
 inventory:
 - name: square-transformation

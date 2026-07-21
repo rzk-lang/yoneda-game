@@ -4,7 +4,7 @@ forbidden:
 hints:
 - text: 'Work column by column: `\ t → ?`, where for a fixed `t` you must produce an arrow `hom A (f t) b`.'
 - text: 'The column of the square at `t` is `\ s → codomain-square A is-segal-A a b x y f v t s`, an arrow into `a`. Feed it to `ϕ (f t)`.'
-- text: 'The whole term is `\ t → ϕ (f t) (\ s → codomain-square A is-segal-A a b x y f v t s)`.'
+- text: 'Put the two pieces together: a `\ t → …` that feeds the `t`-th column to `ϕ (f t)`. Assemble it yourself from the column and the application above.'
 id: representable-transformation-on-the-square
 inventory:
 - name: codomain-square

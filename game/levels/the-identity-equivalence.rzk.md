@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: '`is-equiv` is a pair of pairs. Each half is a map back to the source paired with a homotopy. For the identity, the map back is the identity and the homotopy is `refl` everywhere.'
-- text: 'Build `((\ a → a , \ a → refl) , (\ a → a , \ a → refl))`: a retraction and a section, each the identity with a `refl` homotopy.'
+- text: 'Both halves are the same: the map back `\ a → a` paired with the homotopy `\ a → refl`. Nest that pair as the retraction and the section — a pair of pairs — yourself.'
 id: the-identity-equivalence
 statement: 'is-equiv A A (\ a → a)'
 title: The identity is an equivalence

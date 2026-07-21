@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: 'This is the mirror of the right unit law. The composite `id ∘ f` is a witnessed composite, and the left-unit triangle `id-comp-witness` witnesses that its hypotenuse is `f`. Uniqueness does the rest.'
-- text: 'Apply `uniqueness-comp-is-segal` to the unit triangle: `uniqueness-comp-is-segal A is-segal-A x x y (id-hom A x) f f (id-comp-witness A x y f)`.'
+- text: 'Feed the left-unit triangle `id-comp-witness A x y f` to `uniqueness-comp-is-segal`, with the identity `id-hom A x` as the first edge and `f` as the hypotenuse. Assemble the call yourself.'
   when-goal: '= f'
 id: left-unit-law
 inventory:

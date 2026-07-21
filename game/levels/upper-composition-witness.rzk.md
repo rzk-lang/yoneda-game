@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: 'Like the lower triangle, this is `\ (t , s) → ?` reading the transformed square. The upper half reads it with the coordinate order swapped.'
-- text: 'Read the square with the two arguments swapped: `\ (t , s) → square-transformation A is-segal-A a b x y f v ϕ s t`.'
+- text: 'Like the lower witness, but read `square-transformation` with the coordinates swapped — `… s t` inside a `\ (t , s) → …`. Write the application yourself.'
 id: upper-composition-witness
 inventory:
 - name: square-transformation

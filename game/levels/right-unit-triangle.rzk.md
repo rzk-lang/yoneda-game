@@ -3,7 +3,7 @@ forbidden:
 - idJ
 hints:
 - text: 'The right edge is the identity at $y$, so the whole triangle is just $f$, reparametrized. You only need one coordinate.'
-- text: 'Look at the bottom edge of the goal: `↦ f t`. That tells you to apply $f$ to the first coordinate. Type `\ (t , s) → f t`.'
+- text: 'The bottom edge `↦ f t` tells you the triangle depends only on the first coordinate. Return a `\ (t , s) → …` that applies $f$ to `t`.'
   when-goal: '↦ f t'
 id: right-unit-triangle
 inventory:

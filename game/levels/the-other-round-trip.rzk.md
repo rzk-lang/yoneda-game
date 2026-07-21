@@ -24,7 +24,7 @@ inventory:
   type: '(A : U) (x y : A) → U'
   synopsis: 'the type of arrows, passed as an explicit type argument'
 - name: funext
-  type: 'FunExt'
+  type: '(X : U) (A : X → U) (f g : (x : X) → A x) → is-equiv (f = g) ((x : X) → f x = g x) (htpy-eq X A f g)'
   synopsis: 'the function extensionality axiom'
 statement: 'contra-yon A is-segal-A a b (contra-evid A a b ϕ) = ϕ'
 title: The other round-trip

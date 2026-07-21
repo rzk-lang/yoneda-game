@@ -122,8 +122,10 @@ chapters:
 - title: Synthetic pre-∞-categories
   sections:
   - id: morphisms
-    title: Morphisms and triangles
+    title: Morphisms, triangles, and functions
     items:
+    - prose:
+        file: levels/morphisms-functions-overview.md
     - prose:
         file: levels/morphisms-intro.md
     - puzzle:
@@ -136,18 +138,11 @@ chapters:
         file: levels/left-unit-triangle.rzk.md
         role: extra
     - prose:
-        file: levels/morphisms-summary.md
-  - id: functions
-    title: Functions act on cells
-    items:
-    - prose:
         file: levels/functions-intro.md
     - puzzle:
         file: levels/function-on-a-point.rzk.md
         role: pretest
         remedies:
-        - label: 'Review: Morphisms and triangles'
-          section: morphisms
         - label: 'sHoTT: the Segal-types chapter'
           url: https://rzk-lang.github.io/sHoTT/simplicial-hott/05-segal-types.rzk/
     - puzzle:
@@ -155,10 +150,12 @@ chapters:
         prereqs:
         - function-on-a-point
     - prose:
-        file: levels/functions-summary.md
+        file: levels/morphisms-functions-summary.md
   - id: composition
-    title: Composition in Segal types
+    title: Composition and unit laws
     items:
+    - prose:
+        file: levels/composition-unit-laws-overview.md
     - prose:
         file: levels/composition-intro.md
     - puzzle:
@@ -167,11 +164,6 @@ chapters:
         file: levels/composition-witness.rzk.md
         prereqs:
         - composite-arrow
-    - prose:
-        file: levels/composition-summary.md
-  - id: unit-laws
-    title: Identity and unit laws
-    items:
     - prose:
         file: levels/unit-laws-intro.md
     - puzzle:
@@ -190,7 +182,7 @@ chapters:
         prereqs:
         - uniqueness-of-composites
     - prose:
-        file: levels/unit-laws-summary.md
+        file: levels/composition-unit-laws-summary.md
 - title: The Yoneda lemma
   sections:
   - id: naturality

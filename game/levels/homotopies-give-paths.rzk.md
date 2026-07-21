@@ -4,11 +4,11 @@ forbidden:
 hints:
 - text: 'Function extensionality, `funext X A f g`, is the proof that `htpy-eq` is an equivalence. The inverse map you want is its retraction.'
 - text: 'If you are stuck, start with the shape `first (first (funext ? ? ? ?))` and fill in the four arguments.'
-- text: 'The four arguments are `X A f g`: `first (first (funext X A f g))`.'
+- text: 'The four arguments are the domain `X`, the family `A`, and the two functions `f` and `g` from your goal. Supply them to `funext` and take the nested first-projections to reach the retraction.'
 id: homotopies-give-paths
 inventory:
 - name: funext
-  type: 'FunExt'
+  type: '(X : U) (A : X → U) (f g : (x : X) → A x) → is-equiv (f = g) ((x : X) → f x = g x) (htpy-eq X A f g)'
   synopsis: 'the function extensionality axiom (htpy-eq is an equivalence)'
 statement: '((x : X) → f x = g x) → (f = g)'
 title: Homotopies give paths

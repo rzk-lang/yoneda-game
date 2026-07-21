@@ -1,7 +1,7 @@
 ---
 hints:
 - text: '`idJ` does all the work. Hand it the same six arguments it needs, in order, as a single tuple.'
-- text: 'Pass them comma-separated inside parentheses: `idJ (A , a , C , d , x , p)`.'
+- text: 'The tuple lists the six in order — `A`, `a`, `C`, `d`, `x`, `p` — comma-separated inside one pair of parentheses. Write that single `idJ (…)` call yourself.'
 id: path-induction
 statement: C x p
 title: Path induction

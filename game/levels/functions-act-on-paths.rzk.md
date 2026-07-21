@@ -1,7 +1,7 @@
 ---
 hints:
 - text: 'Use `ind-path` to reduce to the case where the path is `refl`. You supply a motive: for an endpoint and a path to it, what are you proving?'
-- text: 'The motive sends an endpoint `b` and a path `x = b` to the goal `f x = f b`. At `refl` that is `f x = f x`, so the base case is `refl`. Build it with `ind-path A x (\ b q → f x = f b) refl y p`.'
+- text: 'The motive sends an endpoint `b` and a path `x = b` to the goal `f x = f b`. At `refl` that is `f x = f x`, so the base case is `refl`. Assemble `ind-path` with that motive and base case, then pass `y` and `p`.'
 id: functions-act-on-paths
 inventory:
 - name: ind-path
