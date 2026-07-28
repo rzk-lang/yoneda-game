@@ -16,11 +16,11 @@ inventory:
 - name: comp-is-segal
   type: '(A : U) (is-segal-A : is-segal A) (x y z : A) (f : hom A x y) (g : hom A y z) → hom A x z'
   synopsis: 'the chosen composite'
-statement: '(t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s , t ≡ 1₂ ↦ v s , s ≡ 0₂ ↦ f t , s ≡ 1₂ ↦ a ]'
+statement: '(t : Δ¹) → (s : Δ¹) → A'
 title: The codomain square
 ---
 
-The proof of naturality begins with a square. Fix a fiberwise transformation `ϕ` and a composable pair `f : x → y` and `v : y → a`. The goal pins the square's four edges: its bottom is `f`, its right is `v`, its left is the composite of `f` and `v`, and its top is the constant arrow at `a`. Fill the interior with two triangles glued along the diagonal `s ≡ t`. The lower triangle `s ≤ t` is the composition witness of `f` and `v`; the upper triangle `t ≤ s` is the degenerate unit triangle on the composite. The tope split `recOR` does the gluing. Build it.
+The proof of naturality begins with a square. Fix a fiberwise transformation `ϕ` and a composable pair `f : x → y` and `v : y → a`. The goal is a square `Δ¹ → Δ¹ → A`, and its four edges are what the naturality proof needs: its bottom is `f`, its right is `v`, its left is the composite of `f` and `v`, and its top is the constant arrow at `a`. The goal type asks only for a square; the four edges are checked once you build it. Fill the interior with two triangles glued along the diagonal `s ≡ t`. The lower triangle `s ≤ t` is the composition witness of `f` and `v`; the upper triangle `t ≤ s` is the degenerate unit triangle on the composite. The tope split `recOR` does the gluing. Build it.
 
 (The `#def` name `codomain-square` is short for the geodesic's `id-codomain-square`.)
 
@@ -68,10 +68,7 @@ The proof of naturality begins with a square. Fix a fiberwise transformation `ϕ
 #def codomain-square
   ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
   ( f : hom A x y) ( v : hom A y a)
-  : ( t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s
-               , t ≡ 1₂ ↦ v s
-               , s ≡ 0₂ ↦ f t
-               , s ≡ 1₂ ↦ a ]
+  : ( t : Δ¹) → (s : Δ¹) → A
   := ?
 ```
 
@@ -79,14 +76,40 @@ The proof of naturality begins with a square. Fix a fiberwise transformation `ϕ
 #def codomain-square
   ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
   ( f : hom A x y) ( v : hom A y a)
-  : ( t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s
-               , t ≡ 1₂ ↦ v s
-               , s ≡ 0₂ ↦ f t
-               , s ≡ 1₂ ↦ a ]
+  : ( t : Δ¹) → (s : Δ¹) → A
   := \ t s →
        recOR
        ( s ≤ t ↦ (witness-comp-is-segal A is-segal-A x y a f v) (t , s)
        , t ≤ s ↦ (comp-id-witness A x a (comp-is-segal A is-segal-A x y a f v)) (s , t))
+```
+
+The square's four edges are not pinned by the goal type; they are verified here.
+
+```rzk postcheck
+-- label: the left edge is the composite of f and v
+#def codomain-square-left
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a) ( s : Δ¹)
+  : codomain-square A is-segal-A a b x y f v 0₂ s = comp-is-segal A is-segal-A x y a f v s
+  := refl
+-- label: the right edge is v
+#def codomain-square-right
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a) ( s : Δ¹)
+  : codomain-square A is-segal-A a b x y f v 1₂ s = v s
+  := refl
+-- label: the bottom edge is f
+#def codomain-square-bottom
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a) ( t : Δ¹)
+  : codomain-square A is-segal-A a b x y f v t 0₂ = f t
+  := refl
+-- label: the top edge is the constant arrow at a
+#def codomain-square-top
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a) ( t : Δ¹)
+  : codomain-square A is-segal-A a b x y f v t 1₂ = a
+  := refl
 ```
 
 ## Conclusion
