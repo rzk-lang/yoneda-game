@@ -10,11 +10,11 @@ inventory:
 - name: codomain-square
   type: '(A : U) (is-segal-A : is-segal A) (a b x y : A) (f : hom A x y) (v : hom A y a) → (t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s , t ≡ 1₂ ↦ v s , s ≡ 0₂ ↦ f t , s ≡ 1₂ ↦ a ]'
   synopsis: 'the square with edges f, v, the composite, and the constant at a'
-statement: '(t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v) , t ≡ 1₂ ↦ ϕ y v ]'
+statement: '(t : Δ¹) → hom A (f t) b'
 title: Transforming the square
 ---
 
-Now push the square through the transformation. For each `t`, the column `\ s → codomain-square … t s` is an arrow into `a`, so `ϕ` carries it to an arrow into `b`. Apply `ϕ` column by column. The goal pins the two end columns: at `t ≡ 0₂` the value is `ϕ x` of the composite, and at `t ≡ 1₂` it is `ϕ y v`. Build it.
+Now push the square through the transformation. For each `t`, the column `\ s → codomain-square … t s` is an arrow into `a`, so `ϕ` carries it to an arrow into `b`. Apply `ϕ` column by column. The goal type asks only for a `t`-indexed family of arrows; the two end columns — at `t ≡ 0₂` the value `ϕ x` of the composite, and at `t ≡ 1₂` the value `ϕ y v` — are checked once you build it. Build it.
 
 (The `#def` name `square-transformation` is short for the geodesic's `square-representable-transformation`.)
 
@@ -74,8 +74,7 @@ Now push the square through the transformation. For each `t`, the column `\ s �
   ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : ( t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v)
-                              , t ≡ 1₂ ↦ ϕ y v ]
+  : ( t : Δ¹) → hom A (f t) b
   := ?
 ```
 
@@ -84,9 +83,25 @@ Now push the square through the transformation. For each `t`, the column `\ s �
   ( A : U) ( is-segal-A : is-segal A) ( a : A) ( b : A) ( x : A) ( y : A)
   ( f : hom A x y) ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : ( t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v)
-                              , t ≡ 1₂ ↦ ϕ y v ]
+  : ( t : Δ¹) → hom A (f t) b
   := \ t → ϕ (f t) (\ s → codomain-square A is-segal-A a b x y f v t s)
+```
+
+```rzk postcheck
+-- label: the start column is ϕ x of the composite
+#def square-transformation-start
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : square-transformation A is-segal-A a b x y f v ϕ 0₂ = ϕ x (comp-is-segal A is-segal-A x y a f v)
+  := refl
+-- label: the end column is ϕ y v
+#def square-transformation-end
+  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
+  ( f : hom A x y) ( v : hom A y a)
+  ( ϕ : (z : A) → hom A z a → hom A z b)
+  : square-transformation A is-segal-A a b x y f v ϕ 1₂ = ϕ y v
+  := refl
 ```
 
 ## Conclusion
