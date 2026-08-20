@@ -111,3 +111,13 @@ In a Segal type the type of fillers over a composable pair, pairs `(k , alpha)` 
 ## Conclusion
 
 Uniqueness is contractibility, read on the nose. The chosen composite is the center of the space of fillers, and any other witnessed arrow is connected to it by the contraction. This single lemma drives both unit laws next, and returns later to simplify the naturality square on the way to Yoneda.
+
+The same proof can be written shorter, by reaching into `is-segal-A` directly instead of going through the named lemmas:
+
+```
+first-path-Σ (hom A x z) (hom2 A x y z f g)
+  (first (is-segal-A x y z f g)) (h , alpha)
+  (second (is-segal-A x y z f g) (h , alpha))
+```
+
+`first (is-segal-A …)` is the center pair and `second (is-segal-A …)` is the contraction, so the two spellings are the same term. The named one is the one that keeps reading as mathematics when the proofs get longer, which is why the sHoTT library uses it.
