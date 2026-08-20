@@ -10,7 +10,9 @@ statement: hom2 A x x y (id-hom A x) f f
 title: The left-unit triangle
 ---
 
-Now the mirror image. Given $f : x \to y$, the triangle whose left edge is the identity at $x$ also has $f$ as its hypotenuse, but this time the degenerate copy of $f$ must vary in the other coordinate. Build it.
+Now the mirror image. Given $f : x \to y$, the triangle whose left edge is the identity at $x$ also has $f$ as its hypotenuse, but this time the degenerate copy of $f$ must vary in the other coordinate.
+
+No scaffolding this time: the square's coordinates are yours to bind. Build it.
 
 ```rzk prelude
 #lang rzk-1
@@ -35,7 +37,7 @@ Now the mirror image. Given $f : x \to y$, the triangle whose left edge is the i
 ```rzk template
 #def left-unit (A : U) (x y : A) (f : hom A x y)
   : hom2 A x x y (id-hom A x) f f
-  := \ (t , s) → ?
+  := ?
 ```
 
 ```rzk solution

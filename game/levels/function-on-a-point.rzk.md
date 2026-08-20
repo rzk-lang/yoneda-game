@@ -6,7 +6,7 @@ statement: hom B (g x) (g x)
 title: A function on a point
 ---
 
-Now we leave a single type and bring in a function $g : A \to B$. A function sends each point of $A$ to a point of $B$. The identity morphism at a point just stays put, and $g$ carries it along. The application `g (?)` is already in place. Fill in the point of $A$ whose image is the identity's endpoint.
+Now we leave a single type and bring in a function $g : A \to B$. A function sends each point of $A$ to a point of $B$. The identity morphism at a point just stays put, and $g$ carries it along. Bind the coordinate, then say which point of $A$ the function is applied to.
 
 ```rzk prelude
 #lang rzk-1
@@ -31,7 +31,7 @@ Now we leave a single type and bring in a function $g : A \to B$. A function sen
 ```rzk template
 #def map-point (A B : U) (g : A → B) (x : A)
   : hom B (g x) (g x)
-  := \ t → g (?)
+  := ?
 ```
 
 ```rzk solution

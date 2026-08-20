@@ -2,11 +2,16 @@
 forbidden:
 - idJ
 id: composite-arrow
+inventory:
+- name: center-contraction
+  synopsis: 'the center of a contractible type, the point everything is a path from'
 statement: hom A x z
 title: Composition
 ---
 
-Every level so far was free: no hypothesis was needed. Genuine composition is different. A Segal type is one where each composable pair of arrows has a unique filler triangle, so `is-segal-A x y z f g` proves that the type of pairs `(h , triangle)` is contractible. Its center, `first (is-segal-A x y z f g)`, is the pair `(composite , witness)`. Take the first projection of that pair to get the composite arrow. Type the term and press Check.
+Every level so far was free: no hypothesis was needed. Genuine composition is different. A Segal type is one where each composable pair of arrows has a unique filler triangle, so `is-segal-A x y z f g` proves that the type of pairs `(h , triangle)` is contractible. Its center is the pair `(composite , witness)`. Take the first projection of that pair to get the composite arrow. Type the term and press Check.
+
+The `center-contraction` you proved earlier is in the prelude, so the center can be named rather than projected: `first is-contr-A` and `center-contraction _ is-contr-A` are the same term.
 
 ```rzk prelude
 #lang rzk-1
@@ -29,6 +34,9 @@ Every level so far was free: no hypothesis was needed. Genuine composition is di
 #def is-contr (A : U)
   : U
   := Σ (a : A) , (x : A) → a =_{ A } x
+#def center-contraction (A : U) (is-contr-A : is-contr A)
+  : A
+  := first is-contr-A
 #def is-segal (A : U)
   : U
   := (x : A) → (y : A) → (z : A) → (f : hom A x y) → (g : hom A y z)
@@ -53,4 +61,12 @@ Every level so far was free: no hypothesis was needed. Genuine composition is di
 
 ## Conclusion
 
-The composite $g \circ f$ is the arrow at the center of the contractible space of fillers. The Segal condition is exactly what makes this arrow exist and be well-defined. Next, recover the triangle that witnesses it.
+The composite $g \circ f$ is the arrow at the center of the contractible space of fillers. The Segal condition is exactly what makes this arrow exist and be well-defined.
+
+Spelled out with the name instead of the projection, the same proof reads
+
+```
+first (center-contraction (Σ (h : hom A x z) , hom2 A x y z f g h) (is-segal-A x y z f g))
+```
+
+which is longer but says what it does. Next, recover the triangle that witnesses it.
