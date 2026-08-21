@@ -9,6 +9,11 @@ hints:
 - text: 'That last path is the contraction applied to your point: `homotopy-contraction (Σ (k : hom A x z) , hom2 A x y z f g k) (is-segal-A x y z f g) (h , alpha)`.'
   when-goal: '= h'
 id: uniqueness-of-composites
+# The engine can offer no correct move here: the goal is `first ?s = first ?t`
+# against a rigid equality, which needs the projections inverted, and rzk does
+# not solve that. What it does offer applies the wrong lemmas, so the panel is
+# turned off and the hints carry the level instead.
+moves: off
 inventory:
 - name: first-path-Σ
   type: '(A : U) (B : A → U) (s t : Σ (a : A) , B a) (e : s = t) → first s = first t'
