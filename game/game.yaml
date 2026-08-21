@@ -157,8 +157,6 @@ chapters:
     items:
     - prose:
         file: levels/composition-unit-laws-overview.md
-    - prose:
-        file: levels/composition-intro.md
     - puzzle:
         file: levels/composite-arrow.rzk.md
     - puzzle:
