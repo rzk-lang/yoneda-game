@@ -14,7 +14,7 @@ statement: '(t : Δ¹) → hom A (f t) b'
 title: Transforming the square
 ---
 
-Now push the square through the transformation. For each `t`, the column `\ s → codomain-square … t s` is an arrow into `a`, so `ϕ` carries it to an arrow into `b`. Apply `ϕ` column by column. The goal type asks only for a `t`-indexed family of arrows; the two end columns — at `t ≡ 0₂` the value `ϕ x` of the composite, and at `t ≡ 1₂` the value `ϕ y v` — are checked once you build it. Build it.
+Now push the square through the transformation. Here `ϕ` becomes an argument, with the type it has had all along: `ϕ : (z : A) → hom A z a → hom A z b`, a fiberwise map carrying an arrow into `a` to an arrow into `b`. For each `t`, the column `\ s → codomain-square … t s` is an arrow into `a`, so `ϕ` carries it to an arrow into `b`. Apply `ϕ` column by column. The goal type asks only for a `t`-indexed family of arrows; the two end columns — at `t ≡ 0₂` the value `ϕ x` of the composite, and at `t ≡ 1₂` the value `ϕ y v` — are checked once you build it. Build it.
 
 (The `#def` name `square-transformation` is short for the geodesic's `square-representable-transformation`.)
 
