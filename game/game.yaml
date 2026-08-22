@@ -274,3 +274,41 @@ chapters:
         - the-identity-equivalence
     - prose:
         file: levels/yoneda-summary.md
+
+# An alternative, shorter route to naturality, following Emily Riehl's exercise
+# sheet: one abstract lemma about squares replaces the explicit construction of
+# the boundary data and the diagonal. It runs alongside the existing naturality
+# section rather than replacing it, so nothing already in play changes, and its
+# levels are starred extras so no one's completion moves. The explicit route is
+# expected to be retired in favour of this one once the workshop is over.
+- title: Naturality, the short route
+  sections:
+  - id: short-naturality
+    title: Naturality from one square lemma
+    items:
+    - prose:
+        file: levels/short-naturality-intro.md
+    - puzzle:
+        file: levels/square-gives-an-equality.rzk.md
+        role: extra
+        prereqs:
+        - uniqueness-of-composites
+        - zig-zag-concatenation
+    - puzzle:
+        file: levels/codomain-square-fiberwise.rzk.md
+        role: extra
+        prereqs:
+        - square-gives-an-equality
+        - composition-witness
+        - right-unit-triangle
+    - puzzle:
+        file: levels/transformed-square-fiberwise.rzk.md
+        role: extra
+        prereqs:
+        - codomain-square-fiberwise
+    - puzzle:
+        file: levels/naturality-short-route.rzk.md
+        role: extra
+        prereqs:
+        - transformed-square-fiberwise
+        - right-unit-law
