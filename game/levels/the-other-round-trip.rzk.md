@@ -90,10 +90,6 @@ Now let the object vary too. The rebuilt transformation and `ϕ` agree at every 
   ( A : U) ( x y z : A) ( p : x = y) ( q : z = y)
   : x = z
   := concat A x y z p (rev A z y q)
-#def zag-zig-concat
-  ( A : U) ( x y z : A) ( p : y = x) ( q : y = z)
-  : x = z
-  := concat A x y z (rev A y x p) q
 #def first-path-Σ
   ( A : U) ( B : A → U) ( s t : Σ (a : A) , B a) ( e : s = t)
   : first s = first t
@@ -120,84 +116,76 @@ Now let the object vary too. The rebuilt transformation and `ϕ` agree at every 
   ( A : U) ( is-segal-A : is-segal A) ( x y : A) ( f : hom A x y)
   : (comp-is-segal A is-segal-A x y y f (id-hom A y)) = f
   := uniqueness-comp-is-segal A is-segal-A x y y f (id-hom A y) f (comp-id-witness A x y f)
-#def codomain-square
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  : ( t : Δ¹) → (s : Δ¹) → A [ t ≡ 0₂ ↦ comp-is-segal A is-segal-A x y a f v s
-                             , t ≡ 1₂ ↦ v s
-                             , s ≡ 0₂ ↦ f t
-                             , s ≡ 1₂ ↦ a ]
+#def eq-square-is-segal
+  ( A : U)
+  ( is-segal-A : is-segal A)
+  ( α : Δ¹ → Δ¹ → A)
+  : comp-is-segal A is-segal-A (α 0₂ 0₂) (α 1₂ 0₂) (α 1₂ 1₂)
+    ( \ t → α t 0₂) (\ s → α 1₂ s)
+  = comp-is-segal A is-segal-A (α 0₂ 0₂) (α 0₂ 1₂) (α 1₂ 1₂)
+    ( \ s → α 0₂ s) (\ t → α t 1₂)
+  :=
+  zig-zag-concat (hom A (α 0₂ 0₂) (α 1₂ 1₂))
+  ( comp-is-segal A is-segal-A (α 0₂ 0₂) (α 1₂ 0₂) (α 1₂ 1₂)
+    ( \ t → α t 0₂) (\ s → α 1₂ s))
+  ( \ t → α t t)
+  ( comp-is-segal A is-segal-A (α 0₂ 0₂) (α 0₂ 1₂) (α 1₂ 1₂)
+    ( \ s → α 0₂ s) (\ t → α t 1₂))
+  ( uniqueness-comp-is-segal A is-segal-A (α 0₂ 0₂) (α 1₂ 0₂) (α 1₂ 1₂)
+    ( \ t → α t 0₂)
+    ( \ s → α 1₂ s)
+    ( \ t → α t t)
+    ( \ (t , s) → α t s))
+  ( uniqueness-comp-is-segal A is-segal-A (α 0₂ 0₂) (α 0₂ 1₂) (α 1₂ 1₂)
+    ( \ s → α 0₂ s)
+    ( \ t → α t 1₂)
+    ( \ t → α t t)
+    ( \ (t , s) → α s t))
+#def id-codomain-square
+  ( A : U)
+  ( is-segal-A : is-segal A)
+  ( a x y : A)
+  ( f : hom A x y)
+  ( v : hom A y a)
+  : ( t : Δ¹) → hom A (f t) a
   := \ t s →
-       recOR
-       ( s ≤ t ↦ (witness-comp-is-segal A is-segal-A x y a f v) (t , s)
-       , t ≤ s ↦ (comp-id-witness A x a (comp-is-segal A is-segal-A x y a f v)) (s , t))
-#def square-transformation
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
+      recOR
+      ( s ≤ t ↦
+        ( witness-comp-is-segal A is-segal-A x y a f v)
+          ( t , s)
+      , t ≤ s ↦
+        ( comp-id-witness A x a
+          ( comp-is-segal A is-segal-A x y a f v)) (s , t))
+#def square-representable-transformation
+  ( A : U)
+  ( is-segal-A : is-segal A)
+  ( a b x y : A)
+  ( f : hom A x y)
+  ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : ( t : Δ¹) → hom A (f t) b [ t ≡ 0₂ ↦ ϕ x (comp-is-segal A is-segal-A x y a f v)
-                              , t ≡ 1₂ ↦ ϕ y v ]
-  := \ t → ϕ (f t) (\ s → codomain-square A is-segal-A a b x y f v t s)
-#def diagonal
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : hom A x b
-  := \ t → square-transformation A is-segal-A a b x y f v ϕ t t
-#def comp-witness
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : hom2 A x y b f (ϕ y v) (diagonal A is-segal-A a b x y f v ϕ)
-  := \ (t , s) → square-transformation A is-segal-A a b x y f v ϕ t s
-#def comp-coherence
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (comp-is-segal A is-segal-A x y b f (ϕ y v)) = (diagonal A is-segal-A a b x y f v ϕ)
-  := uniqueness-comp-is-segal A is-segal-A x y b f (ϕ y v)
-       (diagonal A is-segal-A a b x y f v ϕ)
-       (comp-witness A is-segal-A a b x y f v ϕ)
-#def id-witness
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : hom2 A x b b
-    (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b)
-    (diagonal A is-segal-A a b x y f v ϕ)
-  := \ (t , s) → square-transformation A is-segal-A a b x y f v ϕ s t
-#def id-coherence
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
-    = (diagonal A is-segal-A a b x y f v ϕ)
-  := uniqueness-comp-is-segal A is-segal-A x b b
-       (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b)
-       (diagonal A is-segal-A a b x y f v ϕ)
-       (id-witness A is-segal-A a b x y f v ϕ)
-#def simplified-id-coherence
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
-  ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (ϕ x (comp-is-segal A is-segal-A x y a f v)) = (diagonal A is-segal-A a b x y f v ϕ)
-  := zag-zig-concat (hom A x b)
-       (ϕ x (comp-is-segal A is-segal-A x y a f v))
-       (comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
-       (diagonal A is-segal-A a b x y f v ϕ)
-       (comp-id-is-segal A is-segal-A x b (ϕ x (comp-is-segal A is-segal-A x y a f v)))
-       (id-coherence A is-segal-A a b x y f v ϕ)
+  : ( t : Δ¹) → hom A (f t) b
+  :=
+    \ t →
+      ϕ
+      ( f t)
+      ( id-codomain-square A is-segal-A a x y f v t)
 #def naturality
-  ( A : U) ( is-segal-A : is-segal A) ( a b x y : A)
-  ( f : hom A x y) ( v : hom A y a)
+  ( A : U)
+  ( is-segal-A : is-segal A)
+  ( a b x y : A)
+  ( f : hom A x y)
+  ( v : hom A y a)
   ( ϕ : (z : A) → hom A z a → hom A z b)
-  : (comp-is-segal A is-segal-A x y b f (ϕ y v)) = (ϕ x (comp-is-segal A is-segal-A x y a f v))
-  := zig-zag-concat (hom A x b)
-       (comp-is-segal A is-segal-A x y b f (ϕ y v))
-       (diagonal A is-segal-A a b x y f v ϕ)
-       (ϕ x (comp-is-segal A is-segal-A x y a f v))
-       (comp-coherence A is-segal-A a b x y f v ϕ)
-       (simplified-id-coherence A is-segal-A a b x y f v ϕ)
+  : ( comp-is-segal A is-segal-A x y b f (ϕ y v))
+  = ( ϕ x (comp-is-segal A is-segal-A x y a f v))
+  :=
+  concat (hom A x b)
+  ( comp-is-segal A is-segal-A x y b f (ϕ y v))
+  ( comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
+  ( ϕ x (comp-is-segal A is-segal-A x y a f v))
+  ( eq-square-is-segal A is-segal-A
+    ( square-representable-transformation A is-segal-A a b x y f v ϕ))
+  ( comp-id-is-segal A is-segal-A x b (ϕ x (comp-is-segal A is-segal-A x y a f v)))
 #def htpy-eq (X : U) (A : X → U) (f g : (x : X) → A x) (p : f = g)
   : (x : X) → f x = g x
   := ind-path ((x : X) → A x) f (\ g0 p0 → (x : X) → f x = g0 x) (\ x → refl) g p

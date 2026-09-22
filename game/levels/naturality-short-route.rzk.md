@@ -26,12 +26,14 @@ inventory:
   type: '(A : U) (x y : A) → U'
   synopsis: 'the type of arrows x → y, passed as an explicit type argument'
 statement: 'comp-is-segal A is-segal-A x y b f (ϕ y v) = ϕ x (comp-is-segal A is-segal-A x y a f v)'
-title: Naturality, the short route
+title: Naturality is automatic
 ---
 
 This is why we defined `eq-square-is-segal`: it converts the transformed square into an equality, though not quite the equality we want. Compose that equality with a second one to prove the naturality of `ϕ`.
 
 Naturality says that transforming and then composing agrees with composing and then transforming. The square you just built has exactly those two composites as its two ways around, up to one composition with an identity.
+
+(The `#def` name `naturality` abbreviates the geodesic's `naturality-contravariant-fiberwise-representable-transformation`.)
 
 ```rzk prelude
 #lang rzk-1
@@ -178,7 +180,7 @@ Naturality says that transforming and then composing agrees with composing and t
 ```
 
 ```rzk template
-#def naturality-contravariant-fiberwise-representable-transformation
+#def naturality
   ( A : U)
   ( is-segal-A : is-segal A)
   ( a b x y : A)
@@ -191,7 +193,7 @@ Naturality says that transforming and then composing agrees with composing and t
 ```
 
 ```rzk solution
-#def naturality-contravariant-fiberwise-representable-transformation
+#def naturality
   ( A : U)
   ( is-segal-A : is-segal A)
   ( a b x y : A)
@@ -203,13 +205,13 @@ Naturality says that transforming and then composing agrees with composing and t
   :=
   concat (hom A x b)
   ( comp-is-segal A is-segal-A x y b f (ϕ y v))
-  ( comp-is-segal A is-segal-A x b b  (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
+  ( comp-is-segal A is-segal-A x b b (ϕ x (comp-is-segal A is-segal-A x y a f v)) (id-hom A b))
   ( ϕ x (comp-is-segal A is-segal-A x y a f v))
   ( eq-square-is-segal A is-segal-A
     ( square-representable-transformation A is-segal-A a b x y f v ϕ))
-  ( comp-id-is-segal A is-segal-A x b   (ϕ x (comp-is-segal A is-segal-A x y a f v)))
+  ( comp-id-is-segal A is-segal-A x b (ϕ x (comp-is-segal A is-segal-A x y a f v)))
 ```
 
 ## Conclusion
 
-Naturality came for free, and this time in four steps rather than nine. The square carried all the geometry; the equality lemma turned it into algebra; the unit law tidied the result. No boundary datum and no diagonal had to be named along the way.
+Every fiberwise transformation between representable functors is automatically natural. The square carried all the geometry, the equality lemma turned it into algebra, and the unit law tidied the result. No boundary datum and no diagonal had to be named along the way. This is the technical heart of the contravariant Yoneda lemma.
