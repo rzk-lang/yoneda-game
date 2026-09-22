@@ -21,9 +21,9 @@ statement: '(t : Δ¹) → hom A (f t) a'
 title: The codomain square, fiberwise
 ---
 
-The proof of naturality begins with a square. Fix a composable pair `f : x → y` and `v : y → a`. The goal asks for a family of arrows into `a`, one for each `t`, which is the same square as before with its type read differently: instead of a bare `Δ¹ → Δ¹ → A` whose four edges are checked afterwards, the type says outright that the `t`-th column runs from `f t` to `a`.
+The proof of naturality begins with a square. Fix a composable pair `f : x → y` and `v : y → a`. The square's bottom is `f`, its right is `v`, its left is the composite of `f` and `v`, and its top is the constant arrow at `a`. The goal states it as a family of arrows into `a`, one for each `t`: the `t`-th column runs from `f t` to `a`.
 
-That is worth the trouble. The boundary is now part of the statement rather than something to verify, and the next step only has to apply `ϕ` fiberwise. Fill the interior with two triangles glued along the diagonal `s ≡ t`, as before.
+Reading the square this way is worth the trouble. Part of the boundary is now in the statement, and the next step only has to apply `ϕ` fiberwise. Fill the interior with two triangles glued along the diagonal `s ≡ t`. The lower triangle `s ≤ t` is the composition witness of `f` and `v`, and the upper triangle `t ≤ s` is the degenerate unit triangle on the composite. The tope split `recOR` does the gluing. Build it.
 
 ```rzk prelude
 #lang rzk-1

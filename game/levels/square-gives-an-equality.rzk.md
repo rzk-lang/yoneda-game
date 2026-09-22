@@ -6,6 +6,7 @@ hints:
 - text: 'A half of the square is a `hom2` on the nose. The lower one is `\ (t , s) → α t s`; the upper one is the same square read with its arguments swapped, `\ (t , s) → α s t`.'
 - text: 'Uniqueness of composites turns each half into an equality: `uniqueness-comp-is-segal` applied to a half says the chosen composite of that pair equals the diagonal. That gives you two equalities, both pointing at the diagonal.'
 - text: 'Two equalities into a common middle, and you want their far ends joined. That is exactly the shape `zig-zag-concat` takes: its second path runs backwards. The type it works in is `hom A (α 0₂ 0₂) (α 1₂ 1₂)`, passed by hand.'
+- text: 'For the lower half, the equality is `uniqueness-comp-is-segal A is-segal-A (α 0₂ 0₂) (α 1₂ 0₂) (α 1₂ 1₂) (\ t → α t 0₂) (\ s → α 1₂ s) (\ t → α t t) (\ (t , s) → α t s)`. The upper half is the same with the left and top edges and the swapped square.'
 id: square-gives-an-equality
 inventory:
 - name: uniqueness-comp-is-segal
@@ -27,6 +28,8 @@ title: A square gives an equality
 A square in a Segal type has two ways around it. Go along the bottom and then up the right side, or up the left side and then along the top. Both are composites of arrows between the same two corners, and the square's diagonal fills both. Uniqueness of composites then forces the two composites to be equal.
 
 It is stated for an arbitrary square `α : Δ¹ → Δ¹ → A`, with no boundary data named, which is what makes it reusable: every later square is fed to it whole. It is best taken in one shot, so read the hints in order if you get stuck, and start from `zig-zag-concat`.
+
+The term is long, and the Moves panel does not offer `uniqueness-comp-is-segal` at its holes, so expect to type part of it. Type `0₂` as `0\_2`, and `→` as `\to`. The term does not have to fit on one line: break it wherever you like, as long as each new line is indented.
 
 (The `#def` name is the geodesic's. The sHoTT library proves the same statement as `comp-eq-square-is-segal`, in a section that names the corners and edges separately.)
 
