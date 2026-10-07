@@ -6,7 +6,7 @@ The **∞-Yoneda Game** — an interactive Rzk game following Emily Riehl's [geo
 
 ## How it works
 
-The game content is a `game/game.yaml` table of contents, prose levels in `game/levels/*.md`, and puzzles in `game/levels/*.rzk.md`. Puzzle files contain Markdown prose and fenced Rzk `prelude`, `template`, and `solution` blocks. There is no Haskell toolchain here — [`rzk-game-action`](https://github.com/rzk-lang/rzk-game-action) fetches the prebuilt engine and bundler from a pinned [`rzk-game`](https://github.com/rzk-lang/rzk-game) release, bundles `game/` into `game.json`, assembles the static site, and `.github/workflows/deploy.yml` publishes it to GitHub Pages.
+The game content is a `game/game.yaml` table of contents, prose levels in `game/levels/*.md`, and puzzles in `game/levels/*.rzk.md`. Puzzle files contain Markdown prose and fenced Rzk `prelude`, `template`, and `solution` blocks. There is no Haskell toolchain here — [`rzk-game-action`](https://github.com/rzk-lang/rzk-game-action) fetches the prebuilt engine and bundler from a pinned [`rzk-game`](https://github.com/rzk-lang/rzk-game) release, bundles `game/` into `game.json`, assembles the static site. `.github/workflows/deploy.yml` builds the site on pushes and pull requests to `main`, and on manual runs. Only pushes to `main` publish `public/` to the `gh-pages` branch for GitHub Pages.
 
 ## Authoring locally
 
