@@ -2,7 +2,7 @@
 
 The **∞-Yoneda Game** — an interactive Rzk game following Emily Riehl's [geodesic to the Yoneda lemma](https://emilyriehl.github.io/yoneda/master/simplicial-hott/13-yoneda-geodesic.rzk/), built on the [`rzk-game`](https://github.com/rzk-lang/rzk-game) engine.
 
-> **Status: work in progress.** Nine sections are in place, grouped into three chapters (homotopy type theory, synthetic ∞-categories, and naturality); the remainder of the geodesic to the Yoneda lemma is added over later updates.
+> **Status: work in progress.** Eight sections in three chapters cover homotopy type theory, synthetic pre-∞-categories, and the contravariant Yoneda lemma.
 
 ## How it works
 
