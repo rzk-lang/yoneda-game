@@ -1,8 +1,7 @@
 name: Deploy
 
-# Build the game site from game/ via rzk-game-action (which fetches the pinned
-# rzk-game engine + bundler, needing no Haskell toolchain here) and publish it to
-# GitHub Pages. Runs on push to main; PRs build but do not deploy.
+# Build the site with rzk-game-action on pushes and PRs to main, and manual runs.
+# Only pushes to main publish public/ to gh-pages for GitHub Pages.
 on:
   push:
     branches: [main]
